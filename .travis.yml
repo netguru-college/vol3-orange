@@ -1,0 +1,14 @@
+language: ruby
+cache:
+- bundler
+before_script:
+- bundle exec rake db:create
+- bundle exec rake db:migrate
+- bundle exec rake assets:precompile
+deploy:
+  provider: heroku
+  api_key:
+    secure: F3OCfClyI9R20vTX5RdutDTDSKolt4jA5NwtWLD1Vo5RzhCEYXbvs2FjJcrcsFW8MlC+53Qn8s4IloLrlUnHgqiGryPyudduEEOjofDSw4da6jpg7XR9XizNeP1K93d5JmjgRVkQMcxZMWhfg6iHqFW5h5GISs5AQdvUOMz+/puiE0TFFSQ9rfi1SR59auepQj5gU+OAyGSk6MQXu9OPOhciXGpXJ6l9D8NRzJ4Pqyqs/oo2iWUHVbTi4Ij/LPVhbEsk2fqGTuTDQQjaO5mns8Pz4Rq6b9KU7Cm4CHtQMzJUcBTt4gNl87pvkzdl1yhrs+JQkAAZkH+N0r9AS4TgiTydqvHhPsbsmH1zvnKldYTLaBLNzzLRnWjnuVv6+bqJyNT4O9EAKwGG9aANVidCF/54fSWFZecqhER3AVkR2mnSNiW8hXw8rjSuytfNSkgeltN5l3Q83ufTVxBX506tOvPzRq34PVP2IAFJpTOC5nywhWaaUesb7ppn05fDEc0sk/gShfamB5OvHeMcibr1REv56W9hSxvrmjM3XyEIz8RlQhBf5h4iIYbvWjhL7VTktgubgKLHZXX/CQoE7lBB6GaW+W3zR5ZKjczgR1xCkWA/Crs7aUHqxyeAnHpw12LGudX7f/P8jZ5dRv3bdDKxtJweQuEzXCwYsLA/mgi39JY=
+  app: travel-hero
+  on:
+    repo: netguru-code-college/vol3-orange
