@@ -1,24 +1,23 @@
-# README
+# Welcome to TravelHero!
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+See demo at https://travel-hero.herokuapp.com
 
-Things you may want to cover:
+## Description
 
-* Ruby version
+Don't just plan one trip, plan them all! TravelHero is an app which stores all your travel need-to-knows in one centralized location. Through TravelHero, users can create and edit their travel plans and dream trip itineraries - including proposed destinations, transportation, accommodation, and attractions. Trips can be shared between users so every one has access to the latest plans. 
 
-* System dependencies
+# Installation
 
-* Configuration
+# Tools and Dependencies
 
-* Database creation
+## Tools
+ - **Ruby on Rails** version 2.5.1
+ - **Postgres** version 1.0.0
 
-* Database initialization
+## Gems
 
-* How to run the test suite
+ - List
+ - Gems
+ - Here
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## How to run the test suite
