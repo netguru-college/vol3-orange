@@ -3,6 +3,12 @@ class TripsController < ApplicationController
 
   def index
     @trips = Trip.all
+    @past_trips = @trips.where(
+      created_at: Date.today..(Date.today + 10.years)
+    )
+    @upcoming_trips = @trips.where(
+      created_at: (Date.today - 5.years)..Date.today
+    )
   end
 
   def new
