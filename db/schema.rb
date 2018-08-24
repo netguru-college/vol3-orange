@@ -12,8 +12,22 @@
 
 ActiveRecord::Schema.define(version: 2018_08_24_093301) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attractions", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "start_date", null: false
+    t.datetime "end_date", null: false
+  end
+
+  create_table "days", force: :cascade do |t|
+    t.integer "number"
+    t.datetime "date"
+  end
 
   create_table "trips", force: :cascade do |t|
     t.string "name"
