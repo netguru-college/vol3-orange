@@ -7,6 +7,6 @@ end
 
 5.times do
   User.first.trips.create(
-    name: Faker::Name
+    name: Faker::FunnyName.name
   )
 end
