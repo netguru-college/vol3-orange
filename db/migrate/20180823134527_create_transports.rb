@@ -1,6 +1,7 @@
 class CreateTransports < ActiveRecord::Migration[5.2]
   def change
     create_table :transports do |t|
+      t.belongs_to :place, index: true
       t.string :type_of_transport
       t.string :start_location
       t.string :end_location
