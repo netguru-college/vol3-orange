@@ -1,0 +1,12 @@
+<h1> All trips </h1>
+
+<p>
+  <% @trips.each do |trip| %>
+    <%= trip.name  %>
+    <%= trip.start_date if trip.start_date %>
+    <%= trip.end_date if trip.end_date %>
+    <%= link_to 'Show trip', trip_path(trip) %>
+  <% end %>
+</p>
+
+<%= link_to 'New trip', new_trip_path %>
