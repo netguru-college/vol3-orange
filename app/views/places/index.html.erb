@@ -1,1 +1,13 @@
+<h1> All places in my trip </h1>
 
+<p>
+  <% @places.each do |place| %>
+    <%= place.name %>
+    <%= place.country %>
+    <%= place.start_date %>
+    <%= place.end_date %>
+    <%= link_to 'Show place details', place_path(place) %>
+  <% end %>
+</p>
+
+<%= link_to 'Add place to trip', new_place_path %>
