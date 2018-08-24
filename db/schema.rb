@@ -10,11 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_24_130639) do
+ActiveRecord::Schema.define(version: 2018_08_24_133858) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
 
   create_table "days", force: :cascade do |t|
     t.integer "number"
@@ -45,6 +44,8 @@ ActiveRecord::Schema.define(version: 2018_08_24_130639) do
     t.datetime "start_date"
     t.datetime "end_date"
     t.string "country"
+    t.bigint "trip_id"
+    t.index ["trip_id"], name: "index_places_on_trip_id"
   end
 
   create_table "transports", force: :cascade do |t|
@@ -89,5 +90,6 @@ ActiveRecord::Schema.define(version: 2018_08_24_130639) do
 
   add_foreign_key "attractions", "places"
   add_foreign_key "hotels", "places"
+  add_foreign_key "places", "trips"
   add_foreign_key "transports", "places"
 end
