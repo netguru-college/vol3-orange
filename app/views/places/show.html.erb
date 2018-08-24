@@ -1,12 +1,27 @@
-<h3>
+<h2>
   <%= @place.name %>
   <%= @place.country %>
-</h3>
+</h2>
+<div>
+  <p>
+    Start date: <%= @place.start_date %>
+  </p>
+  <p>
+    End date:<%= @place.end_date %>
+  </p>
+</div>
+<div> Transport Information
+  <p>
+    <%= @place.transports.first.type_of_transport %>
+  </p>
+  <p>
+    From: #{@place.transports.first.start_location} at #{@place.transports.start_time}
+  </p>
+  <p>
+    To: <%= @place.transports.first.end_time %>
+  </p>
+</div>
 
-<p>
-  <%= @place.start_date %>
-  <%= @place.end_date %>
-</p>
 
 <%= link_to 'Edit', edit_place_path(@place) %> |
 <%= link_to 'Delete', @place, method: :delete %> |
