@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
+  
+  root 'trips#index'
+  
   resources :trips
 
-  root 'trips#index'
+  resources :days
+  
+  devise_for :users
+
 end
