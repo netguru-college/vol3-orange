@@ -1,0 +1,9 @@
+<%= simple_form_for @trip do |f| %>
+  <%= f.input :name %>
+  <%= f.input :start_date, as: :date, start_year: 2000,
+    end_year: Date.today.year + 5 %>
+  <%= f.button :submit %>
+  <%= f.input :end_date, as: :date, start_year: Date.today.year + 10,
+    end_year: Date.today.year + 5 %>
+  <%= f.button :submit %>
+<% end %>
