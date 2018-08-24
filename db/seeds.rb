@@ -6,7 +6,7 @@
 end
 
 5.times do
-  Trip.create(
+  User.first.trips.create(
     name: Faker::Name
   )
 end
