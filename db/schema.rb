@@ -10,14 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_24_124156) do
+ActiveRecord::Schema.define(version: 2018_08_24_133858) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "days", force: :cascade do |t|
-    t.integer "number"
-    t.datetime "date"
 
   create_table "attractions", force: :cascade do |t|
     t.string "title"
@@ -25,6 +21,8 @@ ActiveRecord::Schema.define(version: 2018_08_24_124156) do
     t.datetime "updated_at", null: false
     t.datetime "start_date", null: false
     t.datetime "end_date", null: false
+    t.bigint "place_id"
+    t.index ["place_id"], name: "index_attractions_on_place_id"
   end
 
   create_table "hotels", force: :cascade do |t|
@@ -33,6 +31,8 @@ ActiveRecord::Schema.define(version: 2018_08_24_124156) do
     t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "place_id"
+    t.index ["place_id"], name: "index_hotels_on_place_id"
   end
 
   create_table "places", force: :cascade do |t|
@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(version: 2018_08_24_124156) do
     t.datetime "start_date"
     t.datetime "end_date"
     t.string "country"
+    t.bigint "trip_id"
+    t.index ["trip_id"], name: "index_places_on_trip_id"
   end
 
   create_table "transports", force: :cascade do |t|
@@ -82,5 +84,8 @@ ActiveRecord::Schema.define(version: 2018_08_24_124156) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "attractions", "places"
+  add_foreign_key "hotels", "places"
+  add_foreign_key "places", "trips"
   add_foreign_key "transports", "places"
 end
