@@ -1,0 +1,13 @@
+<h3>
+  <%= @place.name %>
+  <%= @place.country %>
+</h3>
+
+<p>
+  <%= @place.start_date %>
+  <%= @place.end_date %>
+</p>
+
+<%= link_to 'Edit', edit_place_path(@place) %> |
+<%= link_to 'Delete', @place, method: :delete %> |
+<%= link_to 'Back to trip', places_path %>
