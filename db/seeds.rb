@@ -1,17 +1,24 @@
 require 'faker'
 require 'as-duration'
 
-5.times do
-  User.create(
-    email: Faker::Internet.email,
-    password: 'Orange2018vol-3'
-  )
-  
-end
+User.create(
+  email: 'user@user.com',
+  password: 'Orange2018vol-3'
+)
 
 5.times do
+  User.create(
+    email: Faker::Internet.unique.email,
+    password: 'Orange2018vol-3'
+  )
+
+end
+
+5.times do |n|
   User.first.trips.create(
-    name: Faker::FunnyName.name
+    name: Faker::FunnyName.name,
+    start_date: Faker::Time.forward(n, :morning),
+    end_date: Faker::Time.forward(n + 20, :morning)
   )
 end
 
@@ -28,11 +35,12 @@ end
 
 Place.all.each do |place|
   place.transports << Transport.create(
-    type_of_transport: Faker::FunnyName.name,
-    start_location: Faker::Address.city,
-    end_location: place.name,
-    cost: Faker::Number.positive,
-    start_time: place.end_date,
-    end_time: place.end_date + 3.hours
-  )
+    Transport.create(
+      type_of_transport: Faker::Name.name,
+      start_location: Faker::Address.city,
+      end_location: place.name,
+      cost: Faker::Number.positive,
+      start_time: place.end_date,
+      end_time: place.end_date + 3.hours
+  ))
 end
