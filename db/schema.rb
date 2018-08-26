@@ -10,27 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_24_133858) do
+ActiveRecord::Schema.define(version: 2018_08_26_151726) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "days", force: :cascade do |t|
-    t.integer "number"
-    t.datetime "date"
-
   create_table "attractions", force: :cascade do |t|
-    t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "start_date", null: false
     t.datetime "end_date", null: false
     t.bigint "place_id"
     t.index ["place_id"], name: "index_attractions_on_place_id"
+    t.string "name", null: false
   end
 
   create_table "hotels", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.float "cost"
     t.string "address"
     t.datetime "created_at", null: false
@@ -40,29 +36,28 @@ ActiveRecord::Schema.define(version: 2018_08_24_133858) do
   end
 
   create_table "places", force: :cascade do |t|
-    t.string "name"
-    t.datetime "start_date"
-    t.datetime "end_date"
+    t.string "name", null: false
+    t.datetime "start_date", null: false
+    t.datetime "end_date", null: false
     t.string "country"
     t.bigint "trip_id"
     t.index ["trip_id"], name: "index_places_on_trip_id"
   end
 
   create_table "transports", force: :cascade do |t|
-    t.string "type_of_transport"
+    t.string "type_of_transport", null: false
     t.string "start_location"
-    t.string "end_location"
     t.float "cost"
-    t.datetime "start_time"
-    t.datetime "end_time"
     t.bigint "place_id"
     t.index ["place_id"], name: "index_transports_on_place_id"
+    t.datetime "start_time", null: false
+    t.datetime "end_time", null: false
   end
 
   create_table "trips", force: :cascade do |t|
-    t.string "name"
-    t.datetime "start_date"
-    t.datetime "end_date"
+    t.string "name", null: false
+    t.datetime "start_date", null: false
+    t.datetime "end_date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
