@@ -20,9 +20,9 @@ ActiveRecord::Schema.define(version: 2018_08_26_151726) do
     t.datetime "updated_at", null: false
     t.datetime "start_date", null: false
     t.datetime "end_date", null: false
+    t.string "name", null: false
     t.bigint "place_id"
     t.index ["place_id"], name: "index_attractions_on_place_id"
-    t.string "name", null: false
   end
 
   create_table "hotels", force: :cascade do |t|
@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 2018_08_26_151726) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "place_id"
+    t.datetime "start_time", null: false
+    t.datetime "end_time", null: false
     t.index ["place_id"], name: "index_hotels_on_place_id"
   end
 
@@ -48,10 +50,10 @@ ActiveRecord::Schema.define(version: 2018_08_26_151726) do
     t.string "type_of_transport", null: false
     t.string "start_location"
     t.float "cost"
-    t.bigint "place_id"
-    t.index ["place_id"], name: "index_transports_on_place_id"
     t.datetime "start_time", null: false
     t.datetime "end_time", null: false
+    t.bigint "place_id"
+    t.index ["place_id"], name: "index_transports_on_place_id"
   end
 
   create_table "trips", force: :cascade do |t|
