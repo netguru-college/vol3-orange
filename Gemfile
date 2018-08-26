@@ -25,6 +25,7 @@ gem 'uglifier', '>= 1.3.0'
 group :development, :test do
   gem 'as-duration', '~> 0.1.0'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'factory_bot_rails', '~> 4.11'
   gem 'rspec-rails', '~> 3.8'
 end
 
