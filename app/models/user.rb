@@ -4,6 +4,6 @@ class User < ApplicationRecord
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :user_trips
+  has_many :user_trips, dependent: :destroy
   has_many :trips, through: :user_trips
 end
