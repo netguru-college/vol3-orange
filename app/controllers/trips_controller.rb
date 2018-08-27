@@ -8,7 +8,7 @@ class TripsController < ApplicationController
   end
 
   def new
-    @trip = Trip.new
+    @trip = current_user.trips.build
   end
 
   def create
