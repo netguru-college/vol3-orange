@@ -1,38 +1,56 @@
 require 'faker'
 require 'as-duration'
 
+User.create(
+  email: 'user@user.com',
+  password: 'Orange2018vol-3'
+)
+
 5.times do
   User.create(
-    email: Faker::Internet.email,
+    email: Faker::Internet.unique.email,
     password: 'Orange2018vol-3'
   )
-  
+
 end
 
-5.times do
-  User.first.trips.create(
-    name: Faker::FunnyName.name
-  )
+User.all.each do |user|
+  5.times do
+    user.trips.create(
+      name: Faker::FunnyName.name,
+      start_date: Faker::Time.forward(1, :morning),
+      end_date: Faker::Time.forward(20, :morning)
+    )
+  end
 end
 
-(1..5).to_a.each do |i|
-  trip_start_date = Faker::Date.between(5.days.from_now, 1.year.from_now)
-  place = Place.create(
-    name: Faker::Address.city,
-    start_date: trip_start_date + i,
-    end_date: trip_start_date + i + 1,
-    country: Faker::Address.country
-  )
-  User.first.trips.first.places << place
+Trip.all.each do |trip|
+  5.times do
+    trip.places.create(
+      name: Faker::WorldCup.city,
+      country: Faker::Address.country,
+      start_date: Trip.first.start_date,
+      end_date: Trip.first.end_date
+    )
+  end
 end
 
-Place.all.each do |place|
-  place.transports << Transport.create(
-    type_of_transport: Faker::FunnyName.name,
-    start_location: Faker::Address.city,
-    end_location: place.name,
-    cost: Faker::Number.positive,
-    start_time: place.end_date,
-    end_time: place.end_date + 3.hours
-  )
+Place.all.each do  |place|
+  5.times do
+    place.hotels.create(
+      name: Faker::Witcher.monster,
+      start_time: Trip.first.start_date,
+      end_time: Trip.first.end_date
+    )
+    place.attractions.create(
+      name: Faker::Restaurant.name,
+      start_date: Trip.first.start_date,
+      end_date: Trip.first.end_date
+    )
+    place.transports.create(
+      type_of_transport: 'train',
+      start_time: Trip.first.start_date,
+      end_time: Trip.first.end_date
+    )
+  end
 end
