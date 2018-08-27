@@ -19,3 +19,8 @@
   </div>
   <%= f.submit "Invite" %>
 <%  end %>
+
+<h4>Users</h4>
+  <% @trip.users.each do |user| %>
+    <div><%= user.email %></div>
+<% end %>
