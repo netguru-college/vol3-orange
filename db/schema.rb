@@ -16,11 +16,11 @@ ActiveRecord::Schema.define(version: 2018_08_26_151726) do
   enable_extension "plpgsql"
 
   create_table "attractions", force: :cascade do |t|
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "start_date", null: false
     t.datetime "end_date", null: false
-    t.string "name", null: false
     t.bigint "place_id"
     t.index ["place_id"], name: "index_attractions_on_place_id"
   end
