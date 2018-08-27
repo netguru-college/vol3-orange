@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
   root 'trips#index'
 
-  resources :trips
+  resources :trips do
+    resources :user_trips, path: :users, module: :trips
+  end
 
   resources :days
 

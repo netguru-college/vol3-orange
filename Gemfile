@@ -19,6 +19,7 @@ gem 'jquery-rails'
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 gem 'toastr-rails', '~> 1.0', '>= 1.0.3'
 gem 'country_select', '~> 3.1'
+gem 'devise_invitable', '~> 1.7', '>= 1.7.4'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
