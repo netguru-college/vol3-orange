@@ -10,14 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_24_133858) do
+ActiveRecord::Schema.define(version: 2018_08_27_073959) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "days", force: :cascade do |t|
-    t.integer "number"
-    t.datetime "date"
 
   create_table "attractions", force: :cascade do |t|
     t.string "title"
@@ -57,6 +53,12 @@ ActiveRecord::Schema.define(version: 2018_08_24_133858) do
     t.datetime "end_time"
     t.bigint "place_id"
     t.index ["place_id"], name: "index_transports_on_place_id"
+  end
+
+  create_table "trip_users", force: :cascade do |t|
+    t.integer "trip_id"
+    t.integer "user_id"
+    t.string "role"
   end
 
   create_table "trips", force: :cascade do |t|
