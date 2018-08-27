@@ -25,12 +25,12 @@ User.all.each do |user|
 end
 
 Trip.all.each do |trip|
-  (1..5).to_a.each do |i|
+  5.times do |i|
     trip.places.create(
       name: Faker::WorldCup.city,
       country: Faker::Address.country,
-      start_date: trip.start_date + i,
-      end_date: trip.end_date + i + 1
+      start_date: trip.start_date + i.days,
+      end_date: trip.end_date + i.days + 1.day
     )
   end
 end
@@ -38,19 +38,17 @@ end
 Place.all.each do |place|
   2.times do
     place.hotels.create(
-      name: Faker::Witcher.monster,
-      start_time: place.start_date,
-      end_time: place.end_date
+      name: Faker::Witcher.monster
     )
     place.attractions.create(
-      name: Faker::Restaurant.name,
+      title: Faker::Restaurant.name,
       start_date: place.start_date,
       end_date: place.end_date
     )
     place.transports.create(
       type_of_transport: Faker::Dessert.variety,
       start_time: place.start_date,
-      end_time: place.first.end_date
+      end_time: place.end_date
     )
   end
 end
