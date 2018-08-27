@@ -16,8 +16,10 @@ Don't just plan one trip, plan them all! TravelHero is an app which stores all y
 
 ## Gems
 
- - List
- - Gems
- - Here
+ - devise (4.5)
+ - simple_form ('~> 4.0', '>= 4.0.1')
+ - bootstrap-sass
+ - faker
+ - rspec ('~> 3.8')
 
 ## How to run the test suite
