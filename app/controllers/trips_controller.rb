@@ -2,13 +2,7 @@ class TripsController < ApplicationController
   before_action :set_trip, only: [:show, :edit, :update, :destroy]
 
   def index
-    @trips = Trip.all
-    @past_trips = @trips.where(
-      created_at: Date.today..(Date.today + 10.years)
-    )
-    @upcoming_trips = @trips.where(
-      created_at: (Date.today - 5.years)..Date.today
-    )
+    @trips = current_user.trips.decorate
   end
 
   def new
