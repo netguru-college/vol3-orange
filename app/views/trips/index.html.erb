@@ -1,12 +1,17 @@
-<h1> All trips </h1>
+<h1> My trips </h1>
 
-<p>
-  <% @trips.each do |trip| %>
-    <%= trip.name  %>
-    <%= trip.start_date if trip.start_date %>
-    <%= trip.end_date if trip.end_date %>
-    <%= link_to 'Show trip', trip_path(trip) %>
+<% if @trips %>
+
+  <% if @trips.current %>
+    <%= render 'trips/current_trips' %>
   <% end %>
-</p>
+  <% if @trips.upcoming %>
+    <%= render 'trips/upcoming_trips' %>
+  <% end %>
+  <% if @trips.past %>
+    <%= render 'trips/past_trips' %>
+  <% end %>
 
-<%= link_to 'New trip', new_trip_path %>
+<% end %>
+
+<%= link_to 'Add a trip', new_trip_path, class: "btn btn-primary" %>

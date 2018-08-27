@@ -3,6 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
+
+gem 'activemodel-serializers-xml'
+gem 'rails', '~> 5.2.1'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap-sass'
 gem 'coffee-rails', '~> 4.2'
@@ -20,6 +23,8 @@ gem 'reform-rails', '~> 0.1.7'
 gem 'sass-rails', '~> 5.0'
 gem 'simple_form', '~> 4.0', '>= 4.0.1'
 gem 'toastr-rails', '~> 1.0', '>= 1.0.3'
+gem 'country_select', '~> 3.1'
+gem 'draper', github: 'drapergem/draper'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
 
