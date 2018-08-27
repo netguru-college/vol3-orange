@@ -8,6 +8,7 @@ gem 'bootstrap-sass'
 gem 'coffee-rails', '~> 4.2'
 gem 'country_select', '~> 3.1'
 gem 'devise', '~> 4.5'
+gem 'devise_invitable', '~> 1.7', '>= 1.7.4'
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
@@ -38,8 +39,8 @@ end
 
 group :test do
   gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
   gem 'chromedriver-helper'
+  gem 'selenium-webdriver'
   gem 'shoulda-matchers', '~> 3.1', '>= 3.1.2'
 end
 
