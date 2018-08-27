@@ -3,6 +3,7 @@ class TripsController < ApplicationController
   before_action :set_trip, only: [:show, :edit, :update, :destroy]
 
   def index
+    @trips = current_user ? current_user.trips : nil
     @trips = current_user.trips
   end
 
