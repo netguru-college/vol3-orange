@@ -1,13 +1,17 @@
 <h1> My trips </h1>
-<div class="row">
-<div class="col-sm-6">
-  <div class="card">
-    <div class="card-body">
-      <%= link_to 'Add a trip', new_trip_path, class: "btn btn-primary" %>
-    </div>
-  </div>
-</div>
 
-<%= render './current_trips' %>
-<%= render './upcoming_trips' %>
-<%= render './past_trips' %>
+<% if @trips %>
+
+  <% if @trips.current %>
+    <%= render 'trips/current_trips' %>
+  <% end %>
+  <% if @trips.upcoming %>
+    <%= render 'trips/upcoming_trips' %>
+  <% end %>
+  <% if @trips.past %>
+    <%= render 'trips/past_trips' %>
+  <% end %>
+
+<% end %>
+
+<%= link_to 'Add a trip', new_trip_path, class: "btn btn-primary" %>
