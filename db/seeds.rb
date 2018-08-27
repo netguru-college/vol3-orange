@@ -4,15 +4,12 @@ require 'as-duration'
 User.create(
   email: 'user@user.com',
   password: 'Orange2018'
-  password: 'Orange2018vol-3'
 )
 
 5.times do
   User.create(
     email: Faker::Internet.unique.email,
     password: 'Orange2018'
-  )
-    password: 'Orange2018vol-3'
   )
 end
 
