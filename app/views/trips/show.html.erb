@@ -13,14 +13,12 @@
 
 
 <h4>Invite User</h4>
-<%= form_for [@trip, UserTrip.new] do |f| %>
-  <div>
-    <%= f.text_field :email, required: true %>
-  </div>
-  <%= f.submit "Invite" %>
-<%  end %>
+  <%= simple_form_for [@trip, UserTrip.new] do |f| %>
+    <%= f. input :email, placeholder: 'user@domain.com', required: true %>
+    <%= f.button :submit, "Invite", class: "btn btn-info" %>
+  <% end %>
 
 <h4>Users</h4>
   <% @trip.users.each do |user| %>
     <div><%= user.email %></div>
-<% end %>
+  <% end %>
