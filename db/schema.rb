@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_27_090053) do
+ActiveRecord::Schema.define(version: 2018_08_27_092421) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,12 +53,6 @@ ActiveRecord::Schema.define(version: 2018_08_27_090053) do
     t.datetime "end_time"
     t.bigint "place_id"
     t.index ["place_id"], name: "index_transports_on_place_id"
-  end
-
-  create_table "trip_users", force: :cascade do |t|
-    t.integer "trip_id"
-    t.integer "user_id"
-    t.string "role"
   end
 
   create_table "trips", force: :cascade do |t|
