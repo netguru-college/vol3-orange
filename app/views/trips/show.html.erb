@@ -1,24 +1,28 @@
-<h3>
-  <%= @trip.name %>
-</h3>
+<div class="row">
+  <div class="col-md-6">
+    <h3><%= @trip.name %></h3>
+    <p>
+      <%= @trip.start_date %>
+      <%= @trip.end_date %>
+    </p>
+    <%= link_to 'Edit', edit_trip_path(@trip) %> |
+    <%= link_to 'Delete', @trip, method: :delete %> |
+    <%= link_to 'Back', trips_path %>
+  </div>
+  <div class="col-md-6">
+    <h4>Invite User</h4>
+      <%= simple_form_for [@trip, UserTrip.new] do |f| %>
+        <%= f. input :email, placeholder: 'user@domain.com', required: true %>
+        <%= f.button :submit, "Invite", class: "btn btn-info" %>
+      <% end %>
 
-<p>
-  <%= @trip.start_date %>
-  <%= @trip.end_date %>
-</p>
-
-<%= link_to 'Edit', edit_trip_path(@trip) %> |
-<%= link_to 'Delete', @trip, method: :delete %> |
-<%= link_to 'Back', trips_path %>
+    <h4>Users</h4>
+      <% @trip.users.each do |user| %>
+        <div><%= user.email %></div>
+      <% end %>
+  </div>
+</div>
 
 
-<h4>Invite User</h4>
-  <%= simple_form_for [@trip, UserTrip.new] do |f| %>
-    <%= f. input :email, placeholder: 'user@domain.com', required: true %>
-    <%= f.button :submit, "Invite", class: "btn btn-info" %>
-  <% end %>
 
-<h4>Users</h4>
-  <% @trip.users.each do |user| %>
-    <div><%= user.email %></div>
-  <% end %>
+
