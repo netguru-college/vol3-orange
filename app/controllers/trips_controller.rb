@@ -4,7 +4,6 @@ class TripsController < ApplicationController
 
   def index
     @trips = current_user ? current_user.trips : nil
-    @trips = current_user.trips
   end
 
   def new
@@ -13,7 +12,7 @@ class TripsController < ApplicationController
 
   def create
     @trip = current_user.trips.build(trip_params)
-    @trip.user_trips.new(user: current_user, role: "owner")
+    @trip.user_trips.new(user: current_user, role: 'owner')
     if @trip.save
       redirect_to @trip
     else
