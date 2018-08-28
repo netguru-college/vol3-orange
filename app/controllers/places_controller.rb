@@ -1,5 +1,5 @@
 class PlacesController < ApplicationController
-  before_action :set_trip, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+  before_action :set_trip
   before_action :set_place, only: [:show, :edit, :update, :destroy]
 
   def index
