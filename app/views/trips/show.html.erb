@@ -22,11 +22,14 @@
       <% end %>
   </div>
   <!--Add there places and rest usefull informations.-->
-  <div class="col-md-12">
-    <%= link_to 'Add new place', new_trip_place_path(@trip), class: "btn btn-success btn-lg" %>
-
-    <%#= link_to new_trip_place_path(@trip) do %>
-        <%#= icon('fas', 'fa-map-marked-alt', 'Add new place') %>
-    <%# end %>
+  <div class="row">
+      <div class="col-md-4">
+        <%= link_to 'Add new place', new_trip_place_path(@trip), class: "btn btn-success btn-lg" %>
+      </div>
+      <div class="col-md-8">
+        <% @trip.places.each do |place| %>
+          <h4><%= link_to place.name, trip_place_path(@trip, place) %></h4>
+        <% end %>
+      </div>
   </div>
 </div>
