@@ -1,42 +1,36 @@
-<!-- <%= simple_form_for @place do |f| %>
-  <%= f.input :name %>
-  <%= f.input :country, priority: ["AU", "NZ", "GB", "US"], label: false %>
-  <%= f.input :start_date, as: :date, start_year: 2000,
+<%= simple_form_for @place, url: trip_places_path do |p| %>
+  <h2>Basic Info</h2>
+    <%= p.input :name %>
+    <%= p.input :country, priority: ["AU", "NZ", "GB", "US"], label: false %>
+    <%= p.input :start_date, as: :date, start_year: Date.today.year - 5,
     end_year: Date.today.year + 5 %>
-  <%= f.input :end_date, as: :date, start_year: 2000,
-    end_year: Date.today.year + 5 %>
-  <%= f.button :submit %>
-<% end %> -->
-
-<%= simple_form_for @place do |p| %>
-  <%= p.input :name %>
-  <%= p.input :country, priority: ["AU", "NZ", "GB", "US"], label: false %>
-  <%= p.input :start_date, as: :date, start_year: Date.today.year - 5,
-    end_year: Date.today.year + 5 %>
-  <%= p.input :end_date, as: :date, start_year: Date.today.year - 5,
-    end_year: Date.today.year + 5 %>
+    <%= p.input :end_date, as: :date, start_year: Date.today.year - 5,
+      end_year: Date.today.year + 5 %>
+  <h2>Transportation</h2>
+  <%= p.simple_fields_for :transports do |t| %>
+    <%= t.input :type_of_transport %>
+    <%= t.input :start_time, as: :datetime, start_year: Date.today.year - 5,
+      end_year: Date.today.year + 5 %>
+    <%= t.input :end_time, as: :datetime, start_year: Date.today.year - 5,
+      end_year: Date.today.year + 5 %>
+    <%= t.input :cost, as: :float %>
+  <% end %>
+  <h2>Accomodation</h2>
+  <%= p.simple_fields_for :hotels do |h| %>
+    <%= h.input :name %>
+    <%= h.input :start_time, as: :datetime, start_year: Date.today.year - 5,
+      end_year: Date.today.year + 5 %>
+    <%= h.input :end_time, as: :date, start_year: Date.today.year - 5,
+      end_year: Date.today.year + 5 %>
+    <%= h.input :cost, as: :float %>
+  <% end %>
+  <h2>Attractions</h2>
   <%= p.simple_fields_for :attractions do |a| %>
     <%= a.input :name %>
     <%= a.input :start_date, as: :date, start_year: Date.today.year - 5,
       end_year: Date.today.year + 5 %>
     <%= a.input :end_date, as: :date, start_year: Date.today.year - 5,
       end_year: Date.today.year + 5 %>
-  <% end %>
-  <%= p.simple_fields_for :transports do |t| %>
-    <%= t.input :name %>
-    <%= t.input :start_time, as: :datetime, start_year: Date.today.year - 5,
-      end_year: Date.today.year + 5 %>
-    <%= t.input :end_time, as: :datetime, start_year: Date.today.year - 5,
-      end_year: Date.today.year + 5 %>
-    <%= h.input :cost, as: :float %>
-  <% end %>
-  <%= p.simple_fields_for :hotels do |h| %>
-    <%= h.input :name %>
-    <%= h.input :start_time, as: :datetime, start_year: Date.today.year - 5,
-      end_year: Date.today.year + 5 %>
-    <%= h.input :end_time, as: :datetime, start_year: Date.today.year - 5,
-      end_year: Date.today.year + 5 %>
-    <%= h.input :cost, as: :float %>
   <% end %>
   <%= p.button :submit %>
 <% end %>
