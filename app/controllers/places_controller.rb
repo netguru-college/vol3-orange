@@ -16,7 +16,7 @@ class PlacesController < ApplicationController
   def create
     @place = @trip.places.build(place_params)
     if @place.save
-      redirect_to @place
+      redirect_to trip_places_path(@trip)
     else
       render :new
     end
@@ -26,7 +26,7 @@ class PlacesController < ApplicationController
 
   def update
     if @place.update(place_params)
-      redirect_to @place
+      redirect_to trip_place_path(@trip, @place)
     else
       render :edit
     end
@@ -34,7 +34,7 @@ class PlacesController < ApplicationController
 
   def destroy
     @place.destroy
-    redirect_to trip_places_path
+    redirect_to trip_places_path(@trip)
   end
 
   private
