@@ -1,21 +1,25 @@
 class TransportsController < ApplicationController
+  before_action :set_trip, :set_place
   before_action :set_transport, only: [:show, :edit, :update, :destroy]
 
   def index
-    @transports = Transport.all
+    @transports = @place.transports
   end
 
   def new
-    @transport = Transport.new
+    @transport = @place.transports.build
   end
 
   def create
-    @transport = Transport.new(transport_params)
+    @transport = @place.transports.build(transport_params)
+    if @transport.save
+      redirect_to trip_place_path(@place)
+    else
+      render :new
+    end
   end
 
-  def show; end
-
-  def edit; end
+  def edit ; end
 
   def update
     if @transport.update(transport_params)
@@ -27,7 +31,7 @@ class TransportsController < ApplicationController
 
   def destroy
     @transport.destroy
-    redirect_to trips_path
+    redirect_to trip_place_path(@place)
   end
 
   private
@@ -36,14 +40,22 @@ class TransportsController < ApplicationController
     params.require(:transport).permit(
       :type_of_transport,
       :start_location,
-      :end_location,
       :cost,
       :start_time,
       :end_time
     )
   end
 
-  def set_transport
-    @transport = Transport.find(params[:id])
+  def set_trip
+    @trip = current_user.trips.find(params[:trip_id])
   end
+
+  def set_place
+    @place = @trip.places.find(params[:place_id])
+  end
+
+  def set_transport
+    @transport = @place.transports.find(params[:id])
+  end
+
 end
