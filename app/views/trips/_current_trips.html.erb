@@ -1,0 +1,22 @@
+<div class="row">
+  <h2>Current trips</h2>
+</div>
+
+<% @trips.current.each do |trip| %>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= trip.name  %></h5>
+          <p class="card-text">
+            From: <%= trip.start_date %>
+          </p>
+          <p class="card-text">
+            Until: <%= trip.end_date %>
+          </p>
+          <%= link_to 'Show trip', trip_path(trip), class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

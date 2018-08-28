@@ -3,16 +3,16 @@ class TripsController < ApplicationController
   before_action :set_trip, only: [:show, :edit, :update, :destroy]
 
   def index
-    @trips = current_user.trips
+    @trips = current_user ? current_user.trips : nil
   end
 
   def new
-    @trip = Trip.new
+    @trip = current_user.trips.build
   end
 
   def create
     @trip = current_user.trips.build(trip_params)
-    @trip.user_trips.new(user: current_user, role: "owner")
+    @trip.user_trips.new(user: current_user, role: 'owner')
     if @trip.save
       redirect_to @trip
     else
