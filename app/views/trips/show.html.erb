@@ -26,10 +26,12 @@
       <div class="col-md-4">
         <%= link_to 'Add new place', new_trip_place_path(@trip), class: "btn btn-success btn-lg" %>
       </div>
-      <div class="col-md-8">
-        <% @trip.places.each do |place| %>
-          <h4><%= link_to place.name, trip_place_path(@trip, place) %></h4>
-        <% end %>
-      </div>
+      <% @trip.places.each do |place| %>
+        <div class="col-md-4">
+            <h4><%= link_to place.name, trip_place_path(@trip, place) %></h4>
+            <p><%= place.start_date %></p>
+            <p><%= place.end_date %></p>
+        </div>
+       <% end %>
   </div>
 </div>
