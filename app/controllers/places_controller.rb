@@ -1,5 +1,5 @@
 class PlacesController < ApplicationController
-  before_action :set_trip, only: [:index, :new, :create]
+  before_action :set_trip, only: [:index, :new, :create, :show, :edit, :update, :destroy]
   before_action :set_place, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -44,7 +44,6 @@ class PlacesController < ApplicationController
   end
 
   def set_trip
-    # @trip = current_user.find(params[:trip_id])
     @trip = current_user.trips.find(params[:trip_id])
   end
 
