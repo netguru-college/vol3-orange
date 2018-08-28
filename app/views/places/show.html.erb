@@ -1,5 +1,7 @@
-<h2>
+<h1>
   <%= @place.name %>
+</h1>
+<h2>
   <%= @place.country %>
 </h2>
 <div>
@@ -12,17 +14,31 @@
 </div>
 <div> Transport Information
   <p>
-    <%= @place.transports.first.type_of_transport %>
+    <%= @place.transports.last.type_of_transport %>
   </p>
   <p>
-    From: #{@place.transports.first.start_location} at #{@place.transports.start_time}
+    From: #{@place.transports.last.start_location} at #{@place.transports.start_time}
   </p>
   <p>
-    To: <%= @place.transports.first.end_time %>
+    To: <%= @place.transports.last.end_time %>
+  </p>
+</div>
+<div> Hotel Information
+  <p>
+    <%= @place.hotels.last.name %>
+  </p>
+</div>
+<div> Attraction Information
+  <p>
+    <%= @place.attractions.last.name %>
   </p>
 </div>
 
 
-<%= link_to 'Edit', edit_place_path(@place) %> |
-<%= link_to 'Delete', @place, method: :delete %> |
+<%= link_to 'Add accomodation', new_trip_place_hotel_path %>
+<%= link_to 'Add transport', new_trip_place_transport_path %>
+<%= link_to 'Add attraction', new_trip_place_attraction_path %>
+
+<%= link_to 'Edit destination', edit_place_path(@place) %>
+<%= link_to 'Delete destination', @place, method: :delete %>
 <%= link_to 'Back to trip', places_path %>

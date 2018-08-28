@@ -1,0 +1,9 @@
+<h1> Edit accomodation </h1>
+
+<%= render 'form', hotel: @hotel %>
+
+<%= link_to 'Delete',
+             trip_place_hotels_path(@hotel),
+                         method: :delete,
+                         data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Back', trip_place_path(@place) %>

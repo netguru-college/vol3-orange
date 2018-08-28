@@ -1,0 +1,9 @@
+<h1> Edit transportation </h1>
+
+<%= render 'form', transport: @transport %>
+
+<%= link_to 'Delete',
+             trip_place_transports_path(@transport),
+                         method: :delete,
+                         data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Back', trip_place_path(@place) %>
