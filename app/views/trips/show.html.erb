@@ -23,10 +23,10 @@
   </div>
   <!--Add there places and rest usefull informations.-->
   <div class="col-md-12">
-    <%= link_to 'Add new place', new_trip_place_path(@trip) %>
+    <%= link_to 'Add new place', new_trip_place_path(@trip), class: "btn btn-success btn-lg" %>
+
+    <%#= link_to new_trip_place_path(@trip) do %>
+        <%#= icon('fas', 'fa-map-marked-alt', 'Add new place') %>
+    <%# end %>
   </div>
 </div>
-
-
-
-
