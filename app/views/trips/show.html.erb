@@ -29,8 +29,8 @@
       <% @trip.places.each do |place| %>
         <div class="col-md-4">
             <h4><%= link_to place.name, trip_place_path(@trip, place) %></h4>
-            <p><%= place.start_date %></p>
-            <p><%= place.end_date %></p>
+            <p><%= (place.start_date).strftime("Start date: %d/%m/%Y") %></p>
+            <p><%= (place.end_date).strftime("End date: %d/%m/%Y") %></p>
         </div>
        <% end %>
   </div>
