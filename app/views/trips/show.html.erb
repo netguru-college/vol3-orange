@@ -26,27 +26,27 @@
 <div class="row">
     <div class="col-md-4">
       <div class="card mb-4" >
-        <div class="card-body">
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item text-center">
-              <%= link_to 'Add new place', new_trip_place_path(@trip), class: "btn btn-success btn-block" %>
-            </li>
-          </ul>
-        </div>
+        <%= link_to new_trip_place_path(@trip), class: "btn btn-success btn-block add-trip" do %>
+          <div class="card-body add-trip-text">
+            Add new place
+          </div>
+        <% end %>
       </div>
     </div>
     <% @trip.places.order("start_date asc").each do |place| %>
       <div class="col-md-4">
         <div class="card mb-4" >
-          <div class="card-body">
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item text-center">
-                <h3 class="card-title"><%= link_to place.name, trip_place_path(@trip, place) %></h3>
-                <span class="text"><%= (place.start_date).strftime("%d/%m/%Y") %> ---
-                <%= (place.end_date).strftime("%d/%m/%Y") %></span>
-                </li>
-            </ul>
-          </div>
+          <%= link_to trip_place_path(@trip, place) do %>
+            <div class="card-body">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item text-center">
+                  <h3 class="card-title"><%= place.name %></h3>
+                  <span class="text"><%= (place.start_date).strftime("%d/%m/%Y") %> ---
+                  <%= (place.end_date).strftime("%d/%m/%Y") %></span>
+                  </li>
+              </ul>
+            </div>
+          <% end %>
         </div>
       </div>
       <% end %>
