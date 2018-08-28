@@ -14,7 +14,7 @@ class AttractionsController < ApplicationController
   def create
     @attraction = @place.attractions.build(attraction_params)
     if @attraction.save
-      redirect_to trip_place_path(@place)
+      redirect_to trip_place_path(@trip, @place)
     else
       render :new
     end
@@ -24,7 +24,7 @@ class AttractionsController < ApplicationController
 
   def update
     if @attraction.update(attraction_params)
-      redirect_to @place
+      redirect_to trip_place_path(@trip, @place)
     else
       render :edit
     end
@@ -32,7 +32,7 @@ class AttractionsController < ApplicationController
 
   def destroy
     @attraction.destroy
-    redirect_to trip_place_path(@place)
+    redirect_to trip_place_path(@trip, @place)
   end
 
   private
@@ -41,7 +41,8 @@ class AttractionsController < ApplicationController
     params.require(:attraction).permit(
       :name,
       :start_date,
-      :end_date
+      :end_date,
+      :cost
     )
   end
 

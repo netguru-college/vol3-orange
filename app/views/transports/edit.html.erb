@@ -3,7 +3,7 @@
 <%= render 'form', transport: @transport %>
 
 <%= link_to 'Delete',
-             trip_place_transports_path(@transport),
+             trip_place_transport_path(@trip, @place, @transport),
                          method: :delete,
                          data: { confirm: 'Are you sure?' } %>
-<%= link_to 'Back', trip_place_path(@place) %>
+<%= link_to 'Back', trip_place_path(@trip, @place) %>

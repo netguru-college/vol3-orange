@@ -1,5 +1,4 @@
-<h2>Add accomodation</h2>
-<%= simple_form_for @hotel, url: trip_place_hotels_path do |h| %>
+<%= simple_form_for [@trip, @place, @hotel] do |h| %>
   <%= h.input :name %>
   <%= h.input :start_time, as: :datetime, start_year: Date.today.year - 5,
     end_year: Date.today.year + 5 %>

@@ -6,7 +6,7 @@
     <%= place.country %>
     <%= place.start_date %>
     <%= place.end_date %>
-    <%= link_to 'Show place details', trip_place_path(place) %>
+    <%= link_to 'Show place details', trip_place_path(@trip, place) %>
   <% end %>
 </p>
 

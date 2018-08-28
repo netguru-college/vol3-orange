@@ -13,7 +13,7 @@ class TransportsController < ApplicationController
   def create
     @transport = @place.transports.build(transport_params)
     if @transport.save
-      redirect_to trip_place_path(@place)
+      redirect_to trip_place_path(@trip, @place)
     else
       render :new
     end
@@ -23,7 +23,7 @@ class TransportsController < ApplicationController
 
   def update
     if @transport.update(transport_params)
-      redirect_to @place
+      redirect_to trip_place_path(@trip, @place)
     else
       render :edit
     end
@@ -31,7 +31,7 @@ class TransportsController < ApplicationController
 
   def destroy
     @transport.destroy
-    redirect_to trip_place_path(@place)
+    redirect_to trip_place_path(@trip, @place)
   end
 
   private
