@@ -1,6 +1,10 @@
 require 'faker'
 require 'as-duration'
 
+Rails.logger = Logger.new(STDOUT)
+
+Rails.logger.info "Creating users..."
+
 User.create(
   email: 'user@user.com',
   password: 'Orange2018'
@@ -11,6 +15,7 @@ User.create(
     email: Faker::Internet.unique.email,
     password: 'Orange2018'
   )
+  print "."
 end
 
 User.all.each do |user|
@@ -20,13 +25,14 @@ User.all.each do |user|
       name: Faker::FunnyName.name,
       start_date: start_date,
       end_date: start_date + 2.weeks
-    user.trips.create(
-      name: Faker::FunnyName.name,
-      start_date: Faker::Time.forward(1, :morning),
-      end_date: Faker::Time.forward(20, :morning)
     )
+    print "."
   end
 end
+
+puts ""
+
+Rails.logger.info "Creating trips..."
 
 Trip.all.each do |trip|
   5.times do |i|
@@ -35,15 +41,14 @@ Trip.all.each do |trip|
       country: Faker::Address.country,
       start_date: trip.start_date + i.days,
       end_date: trip.end_date + i.days + 1.day
-  5.times do
-    trip.places.create(
-      name: Faker::WorldCup.city,
-      country: Faker::Address.country,
-      start_date: Trip.first.start_date,
-      end_date: Trip.first.end_date
     )
+    print '.'
   end
 end
+
+puts ""
+
+Rails.logger.info "Creating places..."
 
 Place.all.each do |place|
   2.times do
@@ -51,7 +56,7 @@ Place.all.each do |place|
       name: Faker::Witcher.monster
     )
     place.attractions.create(
-      title: Faker::Restaurant.name,
+      name: Faker::Restaurant.name,
       start_date: place.start_date,
       end_date: place.end_date
     )
@@ -60,5 +65,8 @@ Place.all.each do |place|
       start_time: place.start_date,
       end_time: place.end_date
     )
+    print "."
   end
 end
+
+puts ""
