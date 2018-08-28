@@ -1,7 +1,6 @@
-<h2>
-  <%= @place.name %>
-  <%= @place.country %>
-</h2>
+<h1>
+  <%= @place.name %>,<%= @place.country %>
+</h1>
 <div>
   <p>
     Start date: <%= @place.start_date %>
@@ -10,19 +9,82 @@
     End date:<%= @place.end_date %>
   </p>
 </div>
-<div> Transport Information
-  <p>
-    <%= @place.transports.first.type_of_transport %>
-  </p>
-  <p>
-    From: #{@place.transports.first.start_location} at #{@place.transports.start_time}
-  </p>
-  <p>
-    To: <%= @place.transports.first.end_time %>
-  </p>
-</div>
 
+<%= link_to 'Edit destination', edit_trip_place_path(@trip, @place) %>
+<%= link_to 'Delete destination', trip_place_path(@trip, @place), method: :delete %>
+<%= link_to 'Back to trip', trip_places_path(@trip) %>
 
-<%= link_to 'Edit', edit_place_path(@place) %> |
-<%= link_to 'Delete', @place, method: :delete %> |
-<%= link_to 'Back to trip', places_path %>
+<% if @place.transports.present? %>
+  <h2>Transport Information</h2>
+  <% @place.transports.each do |transport| %>
+    <div>
+      <h3>
+        <%= transport.type_of_transport %>
+      </h3>
+      <p>
+        From:
+        <%= transport.start_location %>
+        at
+        <%= transport.start_time %>
+      </p>
+      <p>
+        To: <%= @place.transports.last.end_time %>
+      </p>
+      <%= link_to 'Edit', edit_trip_place_transport_path(@trip, @place, transport) %>
+    </div>
+  <% end %>
+<% end %>
+
+<h4>
+  <%= link_to 'Add transport', new_trip_place_transport_path(@trip, @place) %>
+</h4>
+
+<% if @place.hotels.present? %>
+  <h2>Hotel Information</h2>
+  <% @place.hotels.each do |hotel| %>
+    <div>
+      <h3>
+        <%= hotel.name %>
+      </h3>
+      <p>
+        Check-in at: <%= hotel.start_time %>
+      </p>
+      <p>
+        Check-out at: <%= hotel.end_time %>
+      </p>
+      <p>
+        Cost: <%= hotel.end_time %>
+      </p>
+      <%= link_to 'Edit', edit_trip_place_hotel_path(@trip, @place, hotel) %>
+    </div>
+  <% end %>
+<% end %>
+
+<h4>
+  <%= link_to 'Add accomodation', new_trip_place_hotel_path(@trip, @place) %>
+</h4>
+
+<% if @place.attractions.present? %>
+  <h2>Attraction Information</h2>
+  <% @place.attractions.each do |attraction| %>
+    <div>
+      <p>
+        <%= attraction.name %>
+      </p>
+      <p>
+        From: <%= attraction.start_date %>
+      </p>
+      <p>
+        Until: <%= attraction.end_date %>
+      </p>
+      <p>
+        Cost: <%= attraction.cost %>
+      </p>
+      <%= link_to 'Edit', edit_trip_place_attraction_path(@trip, @place, attraction) %>
+    </div>
+  <% end %>
+<% end %>
+
+<h4>
+  <%= link_to 'Add attraction', new_trip_place_attraction_path(@trip, @place) %>
+</h4>
