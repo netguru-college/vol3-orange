@@ -35,7 +35,7 @@
         </div>
       </div>
     </div>
-    <% @trip.places.each do |place| %>
+    <% @trip.places.order("start_date asc").each do |place| %>
       <div class="col-md-4">
         <div class="card mb-4" >
           <div class="card-body">
