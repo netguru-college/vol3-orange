@@ -37,7 +37,7 @@
   <% @place.transports.each do |transport| %>
     <div class="col-md-4 mb-4">
       <div class="card h-100">
-        <div class="card-body">
+        <div class="card-body text-center">
           <h2 class="card-title"><%= transport.type_of_transport %></h2>
           <p class="card-text">
             From: <%= (transport.start_time).strftime("%d/%m/%Y") %>
@@ -49,7 +49,7 @@
             <%= "Cost: " + transport.cost.to_s if transport.cost %>
           </p>
         </div>
-        <div class="card-footer">
+        <div class="card-footer text-center">
           <%= link_to 'Edit', edit_trip_place_transport_path(@trip, @place, transport), class: "btn btn-primary" %>
           <%= link_to 'Delete',
              trip_place_transport_path(@trip, @place, transport),
@@ -91,7 +91,7 @@
   <% @place.attractions.each do |attraction| %>
     <div class="col-md-4 mb-4">
       <div class="card h-100">
-        <div class="card-body">
+        <div class="card-body text-center">
           <h2 class="card-title"><%= attraction.name %></h2>
           <p class="card-text">
             From: <%= (attraction.start_date).strftime("%d/%m/%Y") %>
@@ -103,7 +103,7 @@
             <%= "Cost: " + attraction.cost.to_s if attraction.cost %>
           </p>
         </div>
-        <div class="card-footer">
+        <div class="card-footer text-center">
           <%= link_to 'Edit', edit_trip_place_attraction_path(@trip, @place, attraction), class: "btn btn-primary" %>
           <%= link_to 'Delete',
              trip_place_attraction_path(@trip, @place, attraction),
@@ -145,7 +145,7 @@
   <% @place.hotels.each do |hotel| %>
     <div class="col-md-4 mb-4">
       <div class="card h-100">
-        <div class="card-body">
+        <div class="card-body text-center">
           <h2 class="card-title"><%= hotel.name %></h2>
           <p class="card-text">
             From: <%= (hotel.start_time).strftime("%d/%m/%Y") %>
@@ -157,7 +157,7 @@
             <%= "Cost: " + hotel.cost.to_s if hotel.cost %>
           </p>
         </div>
-        <div class="card-footer">
+        <div class="card-footer text-center">
           <%= link_to 'Edit', edit_trip_place_hotel_path(@trip, @place, hotel), class: "btn btn-primary" %>
           <%= link_to 'Delete',
              trip_place_hotel_path(@trip, @place, hotel),
