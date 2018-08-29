@@ -6,10 +6,10 @@
       <div class="col-lg-4">
         <h1><%= @place.name %>,<%= @place.country %></h1>
         <p>
-          From: <%= (@place.start_date).strftime("%d/%m/%Y") if @place.start_date %>
+          From: <%= (@place.start_date).strftime("%d/%m/%Y") %>
         </p>
         <p>
-          Until: <%= (@place.end_date).strftime("%d/%m/%Y") if @place.end_date %>
+          Until: <%= (@place.end_date).strftime("%d/%m/%Y") %>
         </p>
         <%= link_to 'Edit', edit_trip_place_path(@trip, @place) %>
         <%= link_to 'Delete', trip_place_path(@trip, @place), method: :delete,
@@ -40,13 +40,13 @@
         <div class="card-body">
           <h2 class="card-title"><%= transport.type_of_transport %></h2>
           <p class="card-text">
-            From: <%= (transport.start_time).strftime("%d/%m/%Y") if transport.start_time %>
+            From: <%= (transport.start_time).strftime("%d/%m/%Y") %>
           </p>
           <p class="card-text">
-            Until: <%= (transport.end_time).strftime("%d/%m/%Y") if transport.end_time %>
+            Until: <%= (transport.end_time).strftime("%d/%m/%Y") %>
           </p>
           <p>
-            Cost: <%= transport.cost %>
+            <%= "Cost: " + transport.cost.to_s if transport.cost %>
           </p>
         </div>
         <div class="card-footer">
@@ -94,13 +94,13 @@
         <div class="card-body">
           <h2 class="card-title"><%= attraction.name %></h2>
           <p class="card-text">
-            From: <%= (attraction.start_date).strftime("%d/%m/%Y") if attraction.start_date %>
+            From: <%= (attraction.start_date).strftime("%d/%m/%Y") %>
           </p>
           <p class="card-text">
-            Until: <%= (attraction.end_date).strftime("%d/%m/%Y") if attraction.end_date %>
+            Until: <%= (attraction.end_date).strftime("%d/%m/%Y") %>
           </p>
           <p>
-            Cost: <%= attraction.cost %>
+            <%= "Cost: " + attraction.cost.to_s if attraction.cost %>
           </p>
         </div>
         <div class="card-footer">
@@ -148,13 +148,13 @@
         <div class="card-body">
           <h2 class="card-title"><%= hotel.name %></h2>
           <p class="card-text">
-            From: <%= (hotel.start_time).strftime("%d/%m/%Y") if hotel.start_time %>
+            From: <%= (hotel.start_time).strftime("%d/%m/%Y") %>
           </p>
           <p class="card-text">
-            Until: <%= (hotel.end_time).strftime("%d/%m/%Y") if hotel.end_time %>
+            Until: <%= (hotel.end_time).strftime("%d/%m/%Y") %>
           </p>
           <p>
-            Cost: <%= hotel.cost %>
+            <%= "Cost: " + hotel.cost.to_s if hotel.cost %>
           </p>
         </div>
         <div class="card-footer">
