@@ -1,5 +1,5 @@
 <%= simple_form_for [@trip, @place, @transport] do |f| %>
-  <%= f.input :type_of_transport, collection: %w(train plane bus car taxi boat cruiser bicycle) %>
+  <%= f.input :type_of_transport, collection: %w(train plane bus car taxi boat), include_blank: false %>
   <%= f.input :start_location %>
   <%= f.input :start_time, as: :string, input_html: { type: :date } %>
   <%= f.input :end_time, as: :string, input_html: { type: :date } %>

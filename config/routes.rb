@@ -5,9 +5,10 @@ Rails.application.routes.draw do
 
   resources :trips do
     resources :user_trips, path: :users, module: :trips
-    resources :places do
+    resources :places, only: [:show, :new,
+      :edit, :update, :destroy] do
       resources :attractions, :transports,
-        :hotels
+        :hotels, only: [:new, :edit, :create, :update, :destroy]
     end
   end
 end

@@ -13,7 +13,6 @@
 
 <%= link_to 'Edit destination', edit_trip_place_path(@trip, @place) %>
 <%= link_to 'Delete destination', trip_place_path(@trip, @place), method: :delete %>
-<%= link_to 'Back to trip', trip_places_path(@trip) %>
 
 <% if @place.transports.present? %>
   <h2>Transport Information</h2>
