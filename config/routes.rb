@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :trips do
     resources :user_trips, path: :users, module: :trips
     resources :places, only: [:show, :new,
-      :edit, :update, :destroy] do
+      :edit, :update, :destroy, :create] do
       resources :attractions, :transports,
         :hotels, only: [:new, :edit, :create, :update, :destroy]
     end
