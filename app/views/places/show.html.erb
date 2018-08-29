@@ -40,10 +40,13 @@
         <div class="card-body">
           <h2 class="card-title"><%= transport.type_of_transport %></h2>
           <p class="card-text">
-            From: <%= transport.start_time if transport.start_time %>
+            From: <%= (transport.start_time).strftime("%d/%m/%Y") if transport.start_time %>
           </p>
           <p class="card-text">
-            Until: <%= transport.end_time if transport.end_time %>
+            Until: <%= (transport.end_time).strftime("%d/%m/%Y") if transport.end_time %>
+          </p>
+          <p>
+            Cost: <%= transport.cost %>
           </p>
         </div>
         <div class="card-footer">
@@ -91,10 +94,13 @@
         <div class="card-body">
           <h2 class="card-title"><%= attraction.name %></h2>
           <p class="card-text">
-            From: <%= attraction.start_date if attraction.start_date %>
+            From: <%= (attraction.start_date).strftime("%d/%m/%Y") if attraction.start_date %>
           </p>
           <p class="card-text">
-            Until: <%= attraction.end_date if attraction.end_date %>
+            Until: <%= (attraction.end_date).strftime("%d/%m/%Y") if attraction.end_date %>
+          </p>
+          <p>
+            Cost: <%= attraction.cost %>
           </p>
         </div>
         <div class="card-footer">
@@ -142,10 +148,13 @@
         <div class="card-body">
           <h2 class="card-title"><%= hotel.name %></h2>
           <p class="card-text">
-            From: <%= hotel.start_time if hotel.start_time %>
+            From: <%= (hotel.start_time).strftime("%d/%m/%Y") if hotel.start_time %>
           </p>
           <p class="card-text">
-            Until: <%= hotel.end_time if hotel.end_time %>
+            Until: <%= (hotel.end_time).strftime("%d/%m/%Y") if hotel.end_time %>
+          </p>
+          <p>
+            Cost: <%= hotel.cost %>
           </p>
         </div>
         <div class="card-footer">
