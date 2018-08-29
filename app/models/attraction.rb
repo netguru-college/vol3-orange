@@ -1,6 +1,6 @@
 class Attraction < ApplicationRecord
   belongs_to :place
-  validates :name, :end_date, presence: true
+  validates :name, :start_date, presence: true
   validates :end_date, presence: true, date: { after_or_equal_to: :start_date }
   validate :start_date_within_place_dates, :end_date_within_place_dates
 

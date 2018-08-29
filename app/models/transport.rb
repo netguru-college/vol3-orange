@@ -1,7 +1,7 @@
 class Transport < ApplicationRecord
   belongs_to :place
   validates :type_of_transport, :start_time, :end_time, :start_location, presence: true
-  validates :start_time, presence: true, date: { after_or_equal_to: :start_time }
+  validates :end_time, presence: true, date: { after_or_equal_to: :start_time }
   validate :start_time_within_place_dates, :end_time_within_place_dates
 
   def start_time_within_place_dates
