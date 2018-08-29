@@ -1,8 +1,6 @@
 <%= simple_form_for @trip do |f| %>
   <%= f.input :name %>
-  <%= f.input :start_date, as: :date, start_year: Date.today.year - 10,
-    end_year: Date.today.year + 9 %>
-  <%= f.input :end_date, as: :date, start_year: Date.today.year,
-    end_year: Date.today.year + 10 %>
-  <%= f.button :submit %>
+  <%= f.input :end_date, as: :string, input_html: { type: :date } %>
+  <%= f.input :end_date, as: :string, input_html: { type: :date } %>
+  <%= f.button :submit, class: 'btn btn-success btn-block' %>
 <% end %>

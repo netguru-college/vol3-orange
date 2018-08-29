@@ -1,9 +1,7 @@
 <%= simple_form_for [@trip, @place, @hotel] do |h| %>
   <%= h.input :name %>
-  <%= h.input :start_time, as: :datetime, start_year: Date.today.year - 5,
-    end_year: Date.today.year + 5 %>
-  <%= h.input :end_time, as: :date, start_year: Date.today.year - 5,
-    end_year: Date.today.year + 5 %>
+  <%= h.input :start_time, as: :string, input_html: { type: :date } %>
+  <%= h.input :end_time, as: :string, input_html: { type: :date } %>
   <%= h.input :cost, as: :float %>
-  <%= h.button :submit %>
+  <%= h.button :submit, class: 'btn btn-success btn-block' %>
 <% end %>
