@@ -6,10 +6,10 @@
       <div class="col-lg-4">
         <h1><%= @place.name %>,<%= @place.country %></h1>
         <p>
-          From: <%= (@place.start_date).strftime("%d/%m/%Y") if @place.start_date %>
+          From: <%= (@place.start_date).strftime("%d/%m/%Y") %>
         </p>
         <p>
-          Until: <%= (@place.end_date).strftime("%d/%m/%Y") if @place.end_date %>
+          Until: <%= (@place.end_date).strftime("%d/%m/%Y") %>
         </p>
         <%= link_to 'Edit', edit_trip_place_path(@trip, @place) %>
         <%= link_to 'Delete', trip_place_path(@trip, @place), method: :delete,
@@ -37,19 +37,19 @@
   <% @place.transports.each do |transport| %>
     <div class="col-md-4 mb-4">
       <div class="card h-100">
-        <div class="card-body">
+        <div class="card-body text-center">
           <h2 class="card-title"><%= transport.type_of_transport %></h2>
           <p class="card-text">
-            From: <%= (transport.start_time).strftime("%d/%m/%Y") if transport.start_time %>
+            From: <%= (transport.start_time).strftime("%d/%m/%Y") %>
           </p>
           <p class="card-text">
-            Until: <%= (transport.end_time).strftime("%d/%m/%Y") if transport.end_time %>
+            Until: <%= (transport.end_time).strftime("%d/%m/%Y") %>
           </p>
           <p>
-            Cost: <%= transport.cost %>
+            <%= "Cost: " + transport.cost.to_s if transport.cost %>
           </p>
         </div>
-        <div class="card-footer">
+        <div class="card-footer text-center">
           <%= link_to 'Edit', edit_trip_place_transport_path(@trip, @place, transport), class: "btn btn-primary" %>
           <%= link_to 'Delete',
              trip_place_transport_path(@trip, @place, transport),
@@ -91,19 +91,19 @@
   <% @place.attractions.each do |attraction| %>
     <div class="col-md-4 mb-4">
       <div class="card h-100">
-        <div class="card-body">
+        <div class="card-body text-center">
           <h2 class="card-title"><%= attraction.name %></h2>
           <p class="card-text">
-            From: <%= (attraction.start_date).strftime("%d/%m/%Y") if attraction.start_date %>
+            From: <%= (attraction.start_date).strftime("%d/%m/%Y") %>
           </p>
           <p class="card-text">
-            Until: <%= (attraction.end_date).strftime("%d/%m/%Y") if attraction.end_date %>
+            Until: <%= (attraction.end_date).strftime("%d/%m/%Y") %>
           </p>
           <p>
-            Cost: <%= attraction.cost %>
+            <%= "Cost: " + attraction.cost.to_s if attraction.cost %>
           </p>
         </div>
-        <div class="card-footer">
+        <div class="card-footer text-center">
           <%= link_to 'Edit', edit_trip_place_attraction_path(@trip, @place, attraction), class: "btn btn-primary" %>
           <%= link_to 'Delete',
              trip_place_attraction_path(@trip, @place, attraction),
@@ -145,19 +145,19 @@
   <% @place.hotels.each do |hotel| %>
     <div class="col-md-4 mb-4">
       <div class="card h-100">
-        <div class="card-body">
+        <div class="card-body text-center">
           <h2 class="card-title"><%= hotel.name %></h2>
           <p class="card-text">
-            From: <%= (hotel.start_time).strftime("%d/%m/%Y") if hotel.start_time %>
+            From: <%= (hotel.start_time).strftime("%d/%m/%Y") %>
           </p>
           <p class="card-text">
-            Until: <%= (hotel.end_time).strftime("%d/%m/%Y") if hotel.end_time %>
+            Until: <%= (hotel.end_time).strftime("%d/%m/%Y") %>
           </p>
           <p>
-            Cost: <%= hotel.cost %>
+            <%= "Cost: " + hotel.cost.to_s if hotel.cost %>
           </p>
         </div>
-        <div class="card-footer">
+        <div class="card-footer text-center">
           <%= link_to 'Edit', edit_trip_place_hotel_path(@trip, @place, hotel), class: "btn btn-primary" %>
           <%= link_to 'Delete',
              trip_place_hotel_path(@trip, @place, hotel),
