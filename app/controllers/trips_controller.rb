@@ -14,8 +14,10 @@ class TripsController < ApplicationController
     @trip = current_user.trips.build(trip_params)
     @trip.user_trips.new(user: current_user, role: 'owner')
     if @trip.save
+      flash[:success] = "You have created the #{@trip.name}"
       redirect_to @trip
     else
+      flash[:error] = "Please check the error, something wrong with your input."
       render :new
     end
   end
