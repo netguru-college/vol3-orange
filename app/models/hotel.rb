@@ -16,5 +16,4 @@ class Hotel < ApplicationRecord
       errors.add(:end_time, "can't be later than #{place.end_date}")
     end
   end
-
 end
