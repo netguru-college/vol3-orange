@@ -1,0 +1,9 @@
+<%= simple_form_for [@trip, @place, @transport] do |f| %>
+  <%= f.input :type_of_transport %>
+  <%= f.input :start_time, as: :datetime, start_year: Date.today.year - 5,
+    end_year: Date.today.year + 5 %>
+  <%= f.input :end_time, as: :datetime, start_year: Date.today.year - 5,
+    end_year: Date.today.year + 5 %>
+  <%= f.input :cost, as: :float %>
+  <%= f.button :submit %>
+<% end %>

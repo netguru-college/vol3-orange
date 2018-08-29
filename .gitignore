@@ -8,8 +8,8 @@
 /.bundle
 
 # Ignore all logfiles and tempfiles.
-/history
 /.history
+/.env
 /log/*
 /tmp/*
 !/log/.keep
@@ -27,3 +27,4 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+/.secrets.yml

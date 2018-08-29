@@ -1,0 +1,10 @@
+<h2>Add an attraction</h2>
+<%= simple_form_for [@trip, @place, @attraction] do |a| %>
+  <%= a.input :name %>
+  <%= a.input :start_date, as: :date, start_year: Date.today.year - 5,
+    end_year: Date.today.year + 5 %>
+  <%= a.input :end_date, as: :date, start_year: Date.today.year - 5,
+    end_year: Date.today.year + 5 %>
+  <%= a.input :cost %>
+  <%= a.button :submit %>
+<% end %>

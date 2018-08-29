@@ -1,0 +1,9 @@
+<h1> Edit attractions </h1>
+
+<%= render 'form', attraction: @attraction %>
+
+<%= link_to 'Delete',
+             trip_place_attraction_path(@trip, @place, @attraction),
+                         method: :delete,
+                         data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Back', trip_place_path(@trip, @place) %>
