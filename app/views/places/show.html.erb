@@ -10,6 +10,7 @@
   </p>
 </div>
 
+
 <%= link_to 'Edit destination', edit_trip_place_path(@trip, @place) %>
 <%= link_to 'Delete destination', trip_place_path(@trip, @place), method: :delete %>
 <%= link_to 'Back to trip', trip_places_path(@trip) %>
@@ -88,3 +89,5 @@
 <h4>
   <%= link_to 'Add attraction', new_trip_place_attraction_path(@trip, @place) %>
 </h4>
+
+<%= render 'maps' %>

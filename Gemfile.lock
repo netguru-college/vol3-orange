@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/stympy/faker.git
-  revision: 4a0aa1d30095e72ed2445f5d4fb8487cfed869f1
+  revision: f966b5512b4348c2f87e8b63732a59b627987769
   branch: master
   specs:
     faker (1.9.1)
@@ -141,8 +141,11 @@ GEM
     faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.25)
+    figaro (1.1.1)
+      thor (~> 0.14)
     font-awesome-sass (5.2.0)
       sassc (>= 1.11)
+    geocoder (1.5.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     hashie (3.5.7)
@@ -204,7 +207,7 @@ GEM
       oauth2 (~> 1.1)
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
-    pg (1.0.0)
+    pg (1.1.1)
     public_suffix (3.0.3)
     puma (3.12.0)
     rack (2.0.5)
@@ -354,7 +357,9 @@ DEPENDENCIES
   draper!
   factory_bot_rails (~> 4.11)
   faker!
+  figaro
   font-awesome-sass (~> 5.2.0)
+  geocoder (~> 1.5)
   jbuilder (~> 2.5)
   jquery-rails
   letter_opener (~> 1.4, >= 1.4.1)
@@ -382,4 +387,4 @@ RUBY VERSION
    ruby 2.5.1p57
 
 BUNDLED WITH
-   1.16.4
+   1.16.2

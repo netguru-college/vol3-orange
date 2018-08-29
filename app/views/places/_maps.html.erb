@@ -1,0 +1,24 @@
+<div class="col-md-6">
+  <div id="row">
+    <div id="map" style="width:100%;height:400px"></div>
+    <script>
+      function initMap() {
+        var location = {
+          lat: <%= @place.latitude %>,
+          lng: <%= @place.longitude %>
+        };
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: location,
+          zoom: 14
+        })
+        var marker = new google.maps.Marker({position: location, map: map})
+        infowindow.open(map, marker);
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_MAPS_KEY']%>&callback=initMap"
+                                           async defer></script>
+  </div>
+</div>
+<div class="col-md-6">
+</div>
+</div>

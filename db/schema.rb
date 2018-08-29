@@ -44,6 +44,8 @@ ActiveRecord::Schema.define(version: 2018_08_28_144212) do
     t.datetime "end_date", null: false
     t.string "country"
     t.bigint "trip_id"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["trip_id"], name: "index_places_on_trip_id"
   end
 
