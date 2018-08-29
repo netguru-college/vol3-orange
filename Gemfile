@@ -9,6 +9,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap-sass'
 gem 'coffee-rails', '~> 4.2'
 gem 'country_select', '~> 3.1'
+gem 'date_validator'
 gem 'devise', '~> 4.5'
 gem 'devise_invitable', '~> 1.7', '>= 1.7.4'
 gem 'draper', github: 'drapergem/draper'

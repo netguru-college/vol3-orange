@@ -6,4 +6,4 @@
              trip_place_hotel_path(@trip, @place, @hotel),
                          method: :delete,
                          data: { confirm: 'Are you sure?' } %>
-<%= link_to 'Back', trip_place_path(@trip, @place) %>
+<%= link_to 'Back', trip_place_path(@trip, @place), class: 'btn btn-primary' %>

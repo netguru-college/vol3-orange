@@ -12,6 +12,7 @@ class Trip < ApplicationRecord
   has_many :places, dependent: :destroy
 
   validates :name, presence: true, length: { in: 2..30 }
-  validates :start_date, :end_date, presence: true
+  validates :start_date, presence: true
+  validates :end_date, presence: true, date: { after_or_equal_to: :start_date }
 
 end
