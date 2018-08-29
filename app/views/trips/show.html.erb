@@ -1,41 +1,35 @@
-<div class="row">
-  <div class="col-md-6">
-    <h3><%= @trip.name %></h3>
-    <p>
-      <%= (@trip.start_date).strftime("Start date: %d/%m/%Y") %> </br>
-      <%= (@trip.end_date).strftime("End date: %d/%m/%Y") %>
-    </p>
-    <%= link_to 'Edit', edit_trip_path(@trip) %> |
-    <%= link_to 'Delete', @trip, method: :delete %> |
-    <%= link_to 'Back', trips_path %>
+<header>
+  <div class="row jumbotron">
+    <div class="col-md-8">
+      <h1 class="display-3"><%= @trip.name %></h1>
+      <p class="lead">
+        <%= (@trip.start_date).strftime("Start date: %d/%m/%Y") %> </br>
+        <%= (@trip.end_date).strftime("End date: %d/%m/%Y") %>
+      </p>
+      <%= link_to 'Edit', edit_trip_path(@trip), class: "btn btn-primary btn-lg" %>
+      <%= link_to 'Delete', @trip, method: :delete, class: "btn btn-primary btn-lg" %>
+      <%= link_to 'Back', trips_path, class: "btn btn-primary btn-lg" %>
+    </div>
+    <div class="col-md-4">
+        <h4 class="display-4">Invite User</h4>
+          <%= simple_form_for [@trip, UserTrip.new] do |f| %>
+            <%= f. input :email, placeholder: 'user@domain.com', required: true %>
+            <%= f.button :submit, "Invite", class: "btn btn-secondary" %>
+          <% end %>
+        <hr class="my-4">
+        <h4 class="display-4">Users</h4>
+          <% @trip.users.each do |user| %>
+            <div><%= user.email %></div>
+          <% end %>
+    </div>
   </div>
-  <div class="col-md-6">
-    <h4>Invite User</h4>
-      <%= simple_form_for [@trip, UserTrip.new] do |f| %>
-        <%= f. input :email, placeholder: 'user@domain.com', required: true %>
-        <%= f.button :submit, "Invite", class: "btn btn-info" %>
-      <% end %>
+</header>
 
-    <h4>Users</h4>
-      <% @trip.users.each do |user| %>
-        <div><%= user.email %></div>
-      <% end %>
-  </div>
-</div>
 <!--Add there places and rest usefull informations.-->
 <div class="row">
-    <div class="col-md-4">
-      <div class="card mb-4" >
-        <%= link_to new_trip_place_path(@trip), class: "btn btn-success btn-block add-trip" do %>
-          <div class="card-body add-trip-text">
-            Add new place
-          </div>
-        <% end %>
-      </div>
-    </div>
     <% @trip.places.order("start_date asc").each do |place| %>
-      <div class="col-md-4">
-        <div class="card mb-4" >
+      <div class="col-md-5">
+        <div class="card mb-5" >
           <%= link_to trip_place_path(@trip, place) do %>
             <div class="card-body">
               <ul class="list-group list-group-flush">
@@ -49,5 +43,17 @@
           <% end %>
         </div>
       </div>
+    <% end %>
+    <div class="col-md-2">
+      <%= link_to new_trip_place_path(@trip), class: "btn btn-success add-trip flex-center" do %>
+        <div class="add-trip-text flex-center">
+          <%= icon('fas', 'plus-square') %>
+        </div>
       <% end %>
+    </div>
 </div>
+
+<!-- <%= icon('fas', 'plane') %>
+<%= icon('fas', 'subway') %>
+<%= icon('fas', 'bus') %>
+<%= icon('fas', 'ship') %> -->
