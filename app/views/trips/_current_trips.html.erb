@@ -1,22 +1,19 @@
-<div class="row">
-  <h2>Current trips</h2>
-</div>
-
-<% @trips.current.each do |trip| %>
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title"><%= trip.name  %></h5>
-          <p class="card-text">
-            From: <%= trip.start_date %>
-          </p>
-          <p class="card-text">
-            Until: <%= trip.end_date %>
-          </p>
-          <%= link_to 'Show trip', trip_path(trip), class: "btn btn-primary" %>
-        </div>
+<% if @trips.current %>
+  <% @trips.current.each do |trip| %>
+    <div class="row my-4">
+      <div class="col-lg-8">
+        <img class="img-fluid rounded" src="http://placehold.it/900x400" alt="">
+      </div>
+      <div class="col-lg-4">
+        <h1><%= trip.name %></h1>
+        <p>
+          From: <%= trip.start_date if trip.start_date %>
+        </p>
+        <p>
+          Until: <%= trip.end_date if trip.end_date %>
+        </p>
+        <%= link_to 'Show trip', trip_path(trip), class: "btn btn-primary btn-lg" %>
       </div>
     </div>
-  </div>
+  <% end %>
 <% end %>
