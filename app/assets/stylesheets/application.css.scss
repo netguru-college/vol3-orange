@@ -13,7 +13,12 @@
  *= require_tree .
  *= require_self
  */
+
 @import "bootstrap";
 @import "toastr";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+
+.container {
+  min-height: 100vh;
+}
