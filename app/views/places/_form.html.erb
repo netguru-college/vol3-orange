@@ -4,5 +4,5 @@
     <%= p.input :country, priority: ["AU", "PL", "GB", "US"], label: false %>
     <%= p.input :start_date, as: :string, input_html: { type: :date } %>
     <%= p.input :end_date, as: :string, input_html: { type: :date } %>
-  <%= p.button :submit %>
+    <%= p.button :submit, class: 'btn btn-success btn-block' %>
 <% end %>
