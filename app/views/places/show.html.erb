@@ -1,14 +1,23 @@
-<h1>
-  <%= @place.name %>,<%= @place.country %>
-</h1>
-<div>
-  <p>
-    Start date: <%= @place.start_date %>
-  </p>
-  <p>
-    End date:<%= @place.end_date %>
-  </p>
-</div>
+<div class="row my-4">
+      <div class="col-lg-8">
+        <!--img class="img-fluid rounded" src="http://placehold.it/900x400" alt=""-->
+        <%= render 'maps' %>
+      </div>
+      <div class="col-lg-4">
+        <h1><%= @place.name %>,<%= @place.country %></h1>
+        <p>
+          From: <%= @place.start_date if @place.start_date %>
+        </p>
+        <p>
+          Until: <%= @place.end_date if @place.end_date %>
+        </p>
+      </div>
+    </div>
+
+
+
+
+
 
 
 <%= link_to 'Edit destination', edit_trip_place_path(@trip, @place) %>
@@ -89,5 +98,3 @@
 <h4>
   <%= link_to 'Add attraction', new_trip_place_attraction_path(@trip, @place) %>
 </h4>
-
-<%= render 'maps' %>
