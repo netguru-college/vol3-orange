@@ -1,17 +1,8 @@
-<h1> My trips </h1>
-
-<% if @trips %>
-
-  <% if @trips.current %>
+<div class="container">
+  <% if @trips %>
     <%= render 'trips/current_trips' %>
-  <% end %>
-  <% if @trips.upcoming %>
     <%= render 'trips/upcoming_trips' %>
-  <% end %>
-  <% if @trips.past %>
     <%= render 'trips/past_trips' %>
   <% end %>
-
-<% end %>
-
-<%= link_to 'Add a trip', new_trip_path, class: "btn btn-primary" %>
+  <%= link_to 'Add a trip', new_trip_path, class: "btn btn-primary btn-lg" %>
+</div>

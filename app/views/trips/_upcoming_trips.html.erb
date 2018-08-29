@@ -1,21 +1,28 @@
-<div class="row">
-  <h2>Upcoming Trips</h2>
-</div>
-<div class="row">
-  <% @trips.upcoming.each do |trip| %>
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title"><%= trip.name %></h5>
-        <p class="card-text">
-          From: <%= trip.start_date if trip.start_date %>
-        </p>
-        <p class="card-text">
-          Until: <%= trip.end_date if trip.end_date %>
-        </p>
-        <%= link_to 'Show trip', trip_path(trip), class: "btn btn-primary" %>
-      </div>
+<% if @trips.upcoming %>
+  <div class="card text-white bg-secondary my-4 text-center">
+    <div class="card-body">
+      <p class="text-white m-0">Upcoming Trips</p>
     </div>
   </div>
-  <% end %>
-</div>
+
+  <div class="row my-4">
+    <% @trips.upcoming.each do |trip| %>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h2 class="card-title"><%= trip.name %></h2>
+            <p class="card-text">
+              From: <%= trip.start_date if trip.start_date %>
+            </p>
+            <p class="card-text">
+              Until: <%= trip.end_date if trip.end_date %>
+            </p>
+          </div>
+          <div class="card-footer">
+            <%= link_to 'More info', trip_path(trip), class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
