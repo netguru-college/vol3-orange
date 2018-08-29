@@ -2,10 +2,6 @@ class TransportsController < ApplicationController
   before_action :set_trip, :set_place
   before_action :set_transport, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @transports = @place.transports
-  end
-
   def new
     @transport = @place.transports.build
   end
@@ -18,8 +14,6 @@ class TransportsController < ApplicationController
       render :new
     end
   end
-
-  def edit ; end
 
   def update
     if @transport.update(transport_params)
