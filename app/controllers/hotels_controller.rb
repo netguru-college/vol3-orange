@@ -3,10 +3,6 @@ class HotelsController < ApplicationController
   before_action :set_trip, :set_place
   before_action :set_hotel, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @hotels = @place.hotels
-  end
-
   def new
     @hotel = @place.hotels.build
   end
@@ -19,8 +15,6 @@ class HotelsController < ApplicationController
       render :new
     end
   end
-
-  def edit ; end
 
   def update
     if @hotel.update(hotel_params)
