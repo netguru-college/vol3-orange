@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :places, only: [:show, :new,
       :edit, :update, :destroy] do
       resources :attractions, :transports,
-        :hotels, only: [:new, :edit, :create, :update]
+        :hotels, only: [:new, :edit, :create, :update, :destroy]
     end
   end
 end
