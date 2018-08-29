@@ -17,7 +17,7 @@ class Place < ApplicationRecord
 
   def start_date_within_place_dates
     if trip.start_date > start_date
-      errors.add(:start_date, "can't be earlier than #{place.start_date}")
+      errors.add(:start_date, "can't be earlier than #{trip.start_date}")
     end
   end
 
