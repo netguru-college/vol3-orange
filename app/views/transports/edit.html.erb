@@ -1,4 +1,4 @@
-<h1> Edit transportation </h1>
+<h1> Edit transport to <%= @place %> </h1>
 
 <%= render 'form', transport: @transport %>
 
@@ -6,4 +6,4 @@
              trip_place_transport_path(@trip, @place, @transport),
                          method: :delete,
                          data: { confirm: 'Are you sure?' } %>
-<%= link_to 'Back', trip_place_path(@trip, @place) %>
+<%= link_to 'Back', trip_place_path(@trip, @place), class: 'btn btn-primary' %>

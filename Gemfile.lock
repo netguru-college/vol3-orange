@@ -111,6 +111,9 @@ GEM
       countries (~> 2.0)
       sort_alphabetical (~> 1.0)
     crass (1.0.4)
+    date_validator (0.9.0)
+      activemodel
+      activesupport
     declarative (0.0.10)
     declarative-builder (0.1.0)
       declarative-option (< 0.2.0)
@@ -352,6 +355,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   country_select (~> 3.1)
+  date_validator
   devise (~> 4.5)
   devise_invitable (~> 1.7, >= 1.7.4)
   draper!
@@ -365,7 +369,7 @@ DEPENDENCIES
   letter_opener (~> 1.4, >= 1.4.1)
   listen (>= 3.0.5, < 3.2)
   omniauth-google-oauth2 (~> 0.5.3)
-  pg (>= 0.18, < 2.0)
+  pg (= 1.1.1)
   puma (~> 3.11)
   rails (~> 5.2.1)
   reform (~> 2.2, >= 2.2.4)
