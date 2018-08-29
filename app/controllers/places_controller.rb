@@ -2,10 +2,6 @@ class PlacesController < ApplicationController
   before_action :set_trip
   before_action :set_place, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @places = @trip.places
-  end
-
   def new
     @place = @trip.places.build
     @place.attractions.build
@@ -21,8 +17,6 @@ class PlacesController < ApplicationController
       render :new
     end
   end
-
-  def edit ; end
 
   def update
     if @place.update(place_params)
