@@ -1,4 +1,4 @@
-<h2>Add a destination</h2>
+
 <%= simple_form_for [@trip, @place] do |p| %>
     <%= p.input :name %>
     <%= p.input :country, priority: ["AU", "PL", "GB", "US"], label: false %>
