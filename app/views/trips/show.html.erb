@@ -7,17 +7,17 @@
         <%= (@trip.end_date).strftime("End date: %d/%m/%Y") %>
       </p>
       <%= link_to 'Edit', edit_trip_path(@trip), class: "btn btn-primary btn-lg" %>
-      <%= link_to 'Delete', @trip, method: :delete, class: "btn btn-primary btn-lg" %>
-      <%= link_to 'Back', trips_path, class: "btn btn-primary btn-lg" %>
+      <%= link_to 'Delete', @trip, method: :delete, class: "btn btn-danger btn-lg" %>
+      <%= link_to 'Back', trips_path, class: "btn btn-info btn-lg" %>
     </div>
     <div class="col-md-4">
-        <h4 class="display-4">Invite User</h4>
+        <h4 class="display-4">Invite someone!</h4>
           <%= simple_form_for [@trip, UserTrip.new] do |f| %>
             <%= f. input :email, placeholder: 'user@domain.com', required: true %>
             <%= f.button :submit, "Invite", class: "btn btn-secondary" %>
           <% end %>
         <hr class="my-4">
-        <h4 class="display-4">Users</h4>
+        <h4 class="display-4">Users:</h4>
           <% @trip.users.each do |user| %>
             <div><%= user.email %></div>
           <% end %>
@@ -26,7 +26,7 @@
 </header>
 
 <div class="row">
-  <div class="col-md-2">
+  <div class="col-md-4">
     <%= link_to new_trip_place_path(@trip), class: "btn btn-success btn-block" do %>
       <div class="flex-center add-trip-text">
         <%= icon('fas', 'plus-square') %>
@@ -37,8 +37,8 @@
     <% end %>
   </div>
   <% @trip.places.order("start_date asc").each do |place| %>
-    <div class="col-md-5">
-      <div class="card mb-5" >
+    <div class="col-md-4">
+      <div class="card mb-4" >
         <%= link_to trip_place_path(@trip, place) do %>
           <div class="card-body">
             <ul class="list-group list-group-flush">

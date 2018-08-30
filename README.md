@@ -12,14 +12,21 @@ Don't just plan one trip, plan them all! TravelHero is an app which stores all y
 
 ## Tools
  - **Ruby on Rails** version 2.5.1
- - **Postgres** version 1.0.0
+ - **Postgres** version 9.5
 
 ## Gems
 
- - devise (4.5)
- - simple_form ('~> 4.0', '>= 4.0.1')
- - bootstrap-sass
+ - bootstrap
+ - carrierwave
+ - country_select
+ - date_validator
+ - devise
+ - devise_invitable
  - faker
- - rspec ('~> 3.8')
-
-## How to run the test suite
+ - figaro
+ - fog-aws
+ - font-awesome
+ - geocoder
+ - omniauth
+ - reform
+ - simple_form

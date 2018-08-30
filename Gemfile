@@ -5,6 +5,7 @@ ruby '2.5.1'
 
 
 gem 'activemodel-serializers-xml'
+gem 'as-duration', '~> 0.1.0'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap-sass'
 gem 'carrierwave', '~> 0.11.2'
@@ -34,7 +35,6 @@ gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
-  gem 'as-duration', '~> 0.1.0'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'factory_bot_rails', '~> 4.11'
   gem 'rspec-rails', '~> 3.8'

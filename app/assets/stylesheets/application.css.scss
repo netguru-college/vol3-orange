@@ -22,3 +22,7 @@
 body > .container {
   min-height: 100vh;
 }
+
+input, select {
+  height: 40px !important;
+}
