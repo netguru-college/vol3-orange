@@ -33,8 +33,8 @@ Trip.all.each do |trip|
     trip.places.create!(
       name: Faker::WorldCup.city,
       country: Faker::Address.country,
-      start_date: trip.start_date + i.days,
-      end_date: trip.end_date - i.days
+      start_date: trip.start_date + i.days + 2.days,
+      end_date: trip.end_date - i.days - 2.days
     )
     print '.'
   end
@@ -48,8 +48,8 @@ Place.all.each do |place|
   2.times do |i|
     place.hotels.create!(
       name: Faker::Witcher.monster,
-      start_time: place.start_date + i.days,
-      end_time: place.end_date - i.days
+      start_time: place.start_date + i.days + 4.days,
+      end_time: place.end_date - i.days - 4.days
     )
     place.attractions.create!(
       name: Faker::Restaurant.name,

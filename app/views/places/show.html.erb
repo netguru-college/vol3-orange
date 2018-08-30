@@ -16,10 +16,10 @@
       Until:
       <%= (@place.end_date).strftime("%d/%m/%Y") %>
     </p>
-    <%= link_to 'Edit', edit_trip_place_path(@trip, @place) %>
+    <%= link_to 'Edit', edit_trip_place_path(@trip, @place), class: 'btn btn-primary' %>
     <%= link_to 'Delete', trip_place_path(@trip, @place), method: :delete,
-                                data: { confirm: 'Are you sure?' } %>
-    <%= link_to 'Back to trip', trip_path(@trip) %>
+                                data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+    <%= link_to 'Back to trip', trip_path(@trip), class: 'btn btn-info' %>
   </div>
 </div>
 

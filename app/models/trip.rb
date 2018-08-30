@@ -16,4 +16,13 @@ class Trip < ApplicationRecord
   validates :end_date, presence: true, date: { after_or_equal_to: :start_date }
 
   mount_uploader :image, ImageUploader
+
+  before_save :set_date_to_midnight
+
+  private
+
+  def set_date_to_midnight
+    self.start_date = self.start_date.midnight
+    self.end_date = self.end_date.midnight
+  end
 end
