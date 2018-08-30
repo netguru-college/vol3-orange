@@ -1,6 +1,7 @@
 <%= simple_form_for @trip do |f| %>
   <%= f.input :name %>
+  <%= f.input :start_date, as: :string, input_html: { type: :date } %>
   <%= f.input :end_date, as: :string, input_html: { type: :date } %>
-  <%= f.input :end_date, as: :string, input_html: { type: :date } %>
+  <%= f.input :image, as: :file, :label => 'Set inspirational trip image' %>
   <%= f.button :submit, class: 'btn btn-success btn-block' %>
 <% end %>
