@@ -7,13 +7,13 @@ class Attraction < ApplicationRecord
   before_save :set_date_to_midnight
 
   def start_date_within_place_dates
-    if place.start_date >= start_date
+    if place.start_date > start_date
       errors.add(:start_date, "can't be earlier than #{place.start_date}")
     end
   end
 
   def end_date_within_place_dates
-    if place.end_date <= end_date
+    if place.end_date < end_date
       errors.add(:end_date, "can't be later than #{place.end_date}")
     end
   end

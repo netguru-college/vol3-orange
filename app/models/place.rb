@@ -20,13 +20,13 @@ class Place < ApplicationRecord
   end
 
   def start_date_within_place_dates
-    if trip.start_date >= start_date
+    if trip.start_date > start_date
       errors.add(:start_date, "can't be earlier than #{trip.start_date}")
     end
   end
 
   def end_date_within_place_dates
-    if trip.end_date <= end_date
+    if trip.end_date < end_date
       errors.add(:end_date, "can't be later than #{trip.end_date}")
     end
   end
