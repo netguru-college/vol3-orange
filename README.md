@@ -30,6 +30,3 @@ Don't just plan one trip, plan them all! TravelHero is an app which stores all y
  - omniauth
  - reform
  - simple_form
-
-
-## How to run the test suite
