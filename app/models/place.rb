@@ -13,7 +13,7 @@ class Place < ApplicationRecord
 
   before_save :set_date_to_midnight
 
-  attr_reader :cost
+  attr_accessor :cost
 
   def full_address
     [name, country].compact.join(',')
@@ -31,6 +31,20 @@ class Place < ApplicationRecord
     end
   end
 
+  def cost
+    cost = 0
+    self.hotels.each do |atr|
+      cost += atr.cost
+    end
+    self.attractions.each do |atr|
+      cost += atr.cost
+    end
+    self.transports.each do |atr|
+      cost += atr.cost
+    end
+    cost
+  end
+
   private
 
   def set_date_to_midnight
@@ -38,7 +52,5 @@ class Place < ApplicationRecord
     self.end_date = self.end_date.midnight
   end
 
-  def cost
-    attraction.cost + hotel.cost + transport.cost
-  end
+
 end
