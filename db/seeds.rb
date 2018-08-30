@@ -34,7 +34,7 @@ Trip.all.each do |trip|
       name: Faker::WorldCup.city,
       country: Faker::Address.country,
       start_date: trip.start_date + i.days + 2.days,
-      end_date: trip.end_date - i.days - 2.days
+      end_date: trip.end_date - i.days
     )
     print '.'
   end
@@ -45,7 +45,7 @@ puts ""
 Rails.logger.info "Creating hotels/attractions/transports..."
 
 Place.all.each do |place|
-  2.times do |i|
+  4.times do |i|
     place.hotels.create!(
       name: Faker::Witcher.monster,
       start_time: place.start_date + i.days + 4.days,
