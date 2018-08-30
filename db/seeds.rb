@@ -10,21 +10,15 @@ User.create(
   password: 'Orange2018'
 )
 
-5.times do
-  User.create(
-    email: Faker::Internet.unique.email,
-    password: 'Orange2018'
-  )
-  print "."
-end
+Rails.logger.info "Creating trips..."
 
 User.all.each do |user|
   5.times do
     start_date = Faker::Time.between(1.year.ago, 1.year.from_now, :all)
-    user.trips.create(
+    user.trips.create!(
       name: Faker::FunnyName.name,
       start_date: start_date,
-      end_date: start_date + 2.weeks
+      end_date: start_date + 2.months
     )
     print "."
   end
@@ -32,15 +26,15 @@ end
 
 puts ""
 
-Rails.logger.info "Creating trips..."
+Rails.logger.info "Creating places..."
 
 Trip.all.each do |trip|
-  5.times do |i|
-    trip.places.create(
+  3.times do |i|
+    trip.places.create!(
       name: Faker::WorldCup.city,
       country: Faker::Address.country,
       start_date: trip.start_date + i.days,
-      end_date: trip.end_date + i.days + 1.day
+      end_date: trip.end_date - i.days
     )
     print '.'
   end
@@ -48,22 +42,25 @@ end
 
 puts ""
 
-Rails.logger.info "Creating places..."
+Rails.logger.info "Creating hotels/attractions/transports..."
 
 Place.all.each do |place|
-  2.times do
-    place.hotels.create(
-      name: Faker::Witcher.monster
+  2.times do |i|
+    place.hotels.create!(
+      name: Faker::Witcher.monster,
+      start_time: place.start_date + i.days,
+      end_time: place.end_date - i.days
     )
-    place.attractions.create(
+    place.attractions.create!(
       name: Faker::Restaurant.name,
-      start_date: place.start_date,
-      end_date: place.end_date
+      start_date: place.start_date + i.days + 1.day,
+      end_date: place.end_date - i.days - 1.day
     )
-    place.transports.create(
+    place.transports.create!(
       type_of_transport: Faker::Dessert.variety,
-      start_time: place.start_date,
-      end_time: place.end_date
+      start_time: place.start_date + i.days + 3.days,
+      end_time: place.end_date - i.days - 3.days,
+      start_location: Faker::WorldCup.city
     )
     print "."
   end
