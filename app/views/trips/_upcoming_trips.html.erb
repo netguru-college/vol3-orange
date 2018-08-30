@@ -15,7 +15,7 @@
               From: <%= trip.start_date.strftime("%d/%m/%Y") %>
             </p>
             <p class="card-text">
-              Until: <%= trip.end_date.strftime("%d/%m/%Y")
+              Until: <%= trip.end_date.strftime("%d/%m/%Y") %>
           </div>
           <div class="card-footer">
             <%= link_to 'More info', trip_path(trip), class: "btn btn-primary" %>
