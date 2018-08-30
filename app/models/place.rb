@@ -11,6 +11,8 @@ class Place < ApplicationRecord
   geocoded_by :full_address
   after_validation :geocode if :full_address_changed?
 
+  before_save :set_date_to_midnight
+
   def full_address
     [name, country].compact.join(',')
   end
@@ -25,5 +27,12 @@ class Place < ApplicationRecord
     if trip.end_date <= end_date
       errors.add(:end_date, "can't be later than #{trip.end_date}")
     end
+  end
+
+  private
+
+  def set_date_to_midnight
+    self.start_date = self.start_date.midnight
+    self.end_date = self.end_date.midnight
   end
 end
