@@ -16,7 +16,7 @@ User.all.each do |user|
   5.times do
     start_date = Faker::Time.between(1.year.ago, 1.year.from_now, :all)
     user.trips.create!(
-      name: Faker::FunnyName.name,
+      name: Faker::Address.country + " trip",
       start_date: start_date,
       end_date: start_date + 2.months
     )
@@ -31,7 +31,7 @@ Rails.logger.info "Creating places..."
 Trip.all.each do |trip|
   3.times do |i|
     trip.places.create!(
-      name: Faker::WorldCup.city,
+      name: Faker::Address.city,
       country: Faker::Address.country,
       start_date: trip.start_date + i.days + 2.days,
       end_date: trip.end_date - i.days
@@ -45,7 +45,7 @@ puts ""
 Rails.logger.info "Creating hotels/attractions/transports..."
 
 Place.all.each do |place|
-  4.times do |i|
+  6.times do |i|
     place.hotels.create!(
       name: Faker::Witcher.monster,
       start_time: place.start_date + i.days + 4.days,
