@@ -1,23 +1,27 @@
 <div class="row my-4">
-      <div class="col-lg-8">
-        <!--img class="img-fluid rounded" src="http://placehold.it/900x400" alt=""-->
-        <%= render 'maps' %>
-      </div>
-      <div class="col-lg-4">
-        <h1><%= @place.name %>,<%= @place.country %></h1>
-        <p>
-          From: <%= (@place.start_date).strftime("%d/%m/%Y") %>
-        </p>
-        <p>
-          Until: <%= (@place.end_date).strftime("%d/%m/%Y") %>
-        </p>
-        <%= link_to 'Edit', edit_trip_place_path(@trip, @place), class: 'btn btn-primary' %>
-        <%= link_to 'Delete', trip_place_path(@trip, @place), method: :delete,
+  <div class="col-lg-8">
+    <!--img class="img-fluid rounded" src="http://placehold.it/900x400" alt=""-->
+    <%= render 'maps' %>
+  </div>
+  <div class="col-lg-4">
+    <h1>
+      <%= @place.name %>,
+      <%= @place.country %>
+    </h1>
+    <p>
+      From:
+      <%= (@place.start_date).strftime("%d/%m/%Y") %>
+    </p>
+    <p>
+      Until:
+      <%= (@place.end_date).strftime("%d/%m/%Y") %>
+    </p>
+    <%= link_to 'Edit', edit_trip_place_path(@trip, @place), class: 'btn btn-primary' %>
+    <%= link_to 'Delete', trip_place_path(@trip, @place), method: :delete,
                                 data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
-        <br><br>
-        <%= link_to 'Back to trip', trip_path(@trip), class: 'btn btn-info' %>
-      </div>
-    </div>
+    <%= link_to 'Back to trip', trip_path(@trip), class: 'btn btn-info' %>
+  </div>
+</div>
 
 <% if @place.transports.present? %>
 <div class="card text-white bg-secondary my-4 text-center">
@@ -26,51 +30,55 @@
   </div>
 </div>
 <div class="row">
-<div class="col-md-4 mb-4">
-  <div class="card h-100">
-    <%= link_to new_trip_place_transport_path(@trip, @place), class: "btn btn-success btn-block add-trip" do %>
+  <div class="col-md-4 mb-4">
+    <div class="card h-100">
+      <%= link_to new_trip_place_transport_path(@trip, @place), class: "btn btn-success btn-block add-trip" do %>
       <div class="card-body add-transport-text">
         Add new transport
       </div>
-    <% end %>
-  </div>
-</div>
-  <% @place.transports.each do |transport| %>
-    <div class="col-md-4 mb-4">
-      <div class="card h-100">
-        <div class="card-body text-center">
-          <h2 class="card-title"><%= transport.type_of_transport %></h2>
-          <p class="card-text">
-            From: <%= (transport.start_time).strftime("%d/%m/%Y") %>
-          </p>
-          <p class="card-text">
-            Until: <%= (transport.end_time).strftime("%d/%m/%Y") %>
-          </p>
-          <p>
-            <%= "Cost: " + transport.cost.to_s if transport.cost %>
-          </p>
-        </div>
-        <div class="card-footer text-center">
-          <%= link_to 'Edit', edit_trip_place_transport_path(@trip, @place, transport), class: "btn btn-primary" %>
-          <%= link_to 'Delete',
-             trip_place_transport_path(@trip, @place, transport),
-                         method: :delete,
-                         data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
-        </div>
-      </div>
-    </div>
-  <% end %>
-</div>
-<% else %>
-  <div class="col-md-12 mb-12">
-    <div class="card h-100">
-      <%= link_to new_trip_place_transport_path(@trip, @place), class: "btn btn-success btn-block add-trip" do %>
-        <div class="card-body add-transport-text">
-          Add new transport
-        </div>
       <% end %>
     </div>
   </div>
+  <% @place.transports.each do |transport| %>
+  <div class="col-md-4 mb-4">
+    <div class="card h-100">
+      <div class="card-body text-center">
+        <h2 class="card-title">
+          <%= transport.type_of_transport %>
+        </h2>
+        <p class="card-text">
+          From:
+          <%= (transport.start_time).strftime("%d/%m/%Y") %>
+        </p>
+        <p class="card-text">
+          Until:
+          <%= (transport.end_time).strftime("%d/%m/%Y") %>
+        </p>
+        <p>
+          <%= "Cost: " + transport.cost.to_s if transport.cost %>
+        </p>
+      </div>
+      <div class="card-footer text-center">
+        <%= link_to 'Edit', edit_trip_place_transport_path(@trip, @place, transport), class: "btn btn-primary" %>
+        <%= link_to 'Delete',
+             trip_place_transport_path(@trip, @place, transport),
+                         method: :delete,
+                         data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+<% else %>
+<div class="col-md-12 mb-12">
+  <div class="card h-100">
+    <%= link_to new_trip_place_transport_path(@trip, @place), class: "btn btn-success btn-block add-trip" do %>
+    <div class="card-body add-transport-text">
+      Add new transport
+    </div>
+    <% end %>
+  </div>
+</div>
 <% end %>
 
 <% if @place.attractions.present? %>
@@ -80,51 +88,55 @@
   </div>
 </div>
 <div class="row">
-<div class="col-md-4 mb-4">
-  <div class="card h-100">
-    <%= link_to new_trip_place_attraction_path(@trip, @place), class: "btn btn-success btn-block add-trip" do %>
+  <div class="col-md-4 mb-4">
+    <div class="card h-100">
+      <%= link_to new_trip_place_attraction_path(@trip, @place), class: "btn btn-success btn-block add-trip" do %>
       <div class="card-body add-attraction-text">
         Add new attraction
       </div>
-    <% end %>
-  </div>
-</div>
-  <% @place.attractions.each do |attraction| %>
-    <div class="col-md-4 mb-4">
-      <div class="card h-100">
-        <div class="card-body text-center">
-          <h2 class="card-title"><%= attraction.name %></h2>
-          <p class="card-text">
-            From: <%= (attraction.start_date).strftime("%d/%m/%Y") %>
-          </p>
-          <p class="card-text">
-            Until: <%= (attraction.end_date).strftime("%d/%m/%Y") %>
-          </p>
-          <p>
-            <%= "Cost: " + attraction.cost.to_s if attraction.cost %>
-          </p>
-        </div>
-        <div class="card-footer text-center">
-          <%= link_to 'Edit', edit_trip_place_attraction_path(@trip, @place, attraction), class: "btn btn-primary" %>
-          <%= link_to 'Delete',
-             trip_place_attraction_path(@trip, @place, attraction),
-                         method: :delete,
-                         data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
-        </div>
-      </div>
-    </div>
-  </div>
-  <% end %>
-<% else %>
-  <div class="col-md-12 mb-12">
-    <div class="card h-100">
-      <%= link_to new_trip_place_attraction_path(@trip, @place), class: "btn btn-success btn-block add-trip" do %>
-        <div class="card-body add-transport-text">
-          Add new attraction
-        </div>
       <% end %>
     </div>
   </div>
+  <% @place.attractions.each do |attraction| %>
+  <div class="col-md-4 mb-4">
+    <div class="card h-100">
+      <div class="card-body text-center">
+        <h2 class="card-title">
+          <%= attraction.name %>
+        </h2>
+        <p class="card-text">
+          From:
+          <%= (attraction.start_date).strftime("%d/%m/%Y") %>
+        </p>
+        <p class="card-text">
+          Until:
+          <%= (attraction.end_date).strftime("%d/%m/%Y") %>
+        </p>
+        <p>
+          <%= "Cost: " + attraction.cost.to_s if attraction.cost %>
+        </p>
+      </div>
+      <div class="card-footer text-center">
+        <%= link_to 'Edit', edit_trip_place_attraction_path(@trip, @place, attraction), class: "btn btn-primary" %>
+        <%= link_to 'Delete',
+             trip_place_attraction_path(@trip, @place, attraction),
+                         method: :delete,
+                         data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+      </div>
+    </div>
+  </div>
+<% end %>
+</div>
+<% else %>
+<div class="col-md-12 mb-12">
+  <div class="card h-100">
+    <%= link_to new_trip_place_attraction_path(@trip, @place), class: "btn btn-success btn-block add-trip" do %>
+    <div class="card-body add-transport-text">
+      Add new attraction
+    </div>
+    <% end %>
+  </div>
+</div>
 <% end %>
 
 <% if @place.hotels.present? %>
@@ -134,50 +146,62 @@
   </div>
 </div>
 <div class="row">
-<div class="col-md-4 mb-4">
-  <div class="card h-100">
-    <%= link_to new_trip_place_hotel_path(@trip, @place), class: "btn btn-success btn-block add-trip" do %>
+  <div class="col-md-4 mb-4">
+    <div class="card h-100">
+      <%= link_to new_trip_place_hotel_path(@trip, @place), class: "btn btn-success btn-block add-trip" do %>
       <div class="card-body add-transport-text">
         Add new hotel
       </div>
-    <% end %>
-  </div>
-</div>
-  <% @place.hotels.each do |hotel| %>
-    <div class="col-md-4 mb-4">
-      <div class="card h-100">
-        <div class="card-body text-center">
-          <h2 class="card-title"><%= hotel.name %></h2>
-          <p class="card-text">
-            From: <%= (hotel.start_time).strftime("%d/%m/%Y") %>
-          </p>
-          <p class="card-text">
-            Until: <%= (hotel.end_time).strftime("%d/%m/%Y") %>
-          </p>
-          <p>
-            <%= "Cost: " + hotel.cost.to_s if hotel.cost %>
-          </p>
-        </div>
-        <div class="card-footer text-center">
-          <%= link_to 'Edit', edit_trip_place_hotel_path(@trip, @place, hotel), class: "btn btn-primary" %>
-          <%= link_to 'Delete',
-             trip_place_hotel_path(@trip, @place, hotel),
-                         method: :delete,
-                         data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
-        </div>
-      </div>
-    </div>
-  </div>
- <% end %>
- </div>
-<% else %>
-  <div class="col-md-12 mb-12">
-    <div class="card h-100">
-      <%= link_to new_trip_place_hotel_path(@trip, @place), class: "btn btn-success btn-block add-trip" do %>
-        <div class="card-body add-transport-text">
-          Add new hotel
-        </div>
       <% end %>
     </div>
   </div>
+  <% @place.hotels.each do |hotel| %>
+  <div class="col-md-4 mb-4">
+    <div class="card h-100">
+      <div class="card-body text-center">
+        <h2 class="card-title">
+          <%= hotel.name %>
+        </h2>
+        <p class="card-text">
+          From:
+          <%= (hotel.start_time).strftime("%d/%m/%Y") %>
+        </p>
+        <p class="card-text">
+          Until:
+          <%= (hotel.end_time).strftime("%d/%m/%Y") %>
+        </p>
+        <p>
+          <%= "Cost: " + hotel.cost.to_s if hotel.cost %>
+        </p>
+      </div>
+      <div class="card-footer text-center">
+        <%= link_to 'Edit', edit_trip_place_hotel_path(@trip, @place, hotel), class: "btn btn-primary" %>
+        <%= link_to 'Delete',
+             trip_place_hotel_path(@trip, @place, hotel),
+                         method: :delete,
+                         data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+      </div>
+    </div>
+  </div>
+<<<<<<< HEAD
+ <% end %>
+ </div>
+=======
 <% end %>
+</div>
+>>>>>>> 33514bcfdcaf5b8b561f361e6a486f889e51b82e
+<% else %>
+<div class="col-md-12 mb-12">
+  <div class="card h-100">
+    <%= link_to new_trip_place_hotel_path(@trip, @place), class: "btn btn-success btn-block add-trip" do %>
+    <div class="card-body add-transport-text">
+      Add new hotel
+    </div>
+    <% end %>
+  </div>
+<<<<<<< HEAD
+<% end %>
+=======
+</div>
+<% end %>
+>>>>>>> 33514bcfdcaf5b8b561f361e6a486f889e51b82e

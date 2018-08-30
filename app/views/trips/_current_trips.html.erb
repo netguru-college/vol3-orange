@@ -3,9 +3,9 @@
     <div class="row my-4">
       <div class="col-lg-8 ">
         <% if trip.image.present? %>
-          <%= image_tag(trip.image_url.to_s, alt: 'travel-the-world', class: "img-fluid rounded") %>
+          <%= image_tag('https://s3.amazonaws.com/travel-hero/uploads/stock-trip-2.jpeg', alt: 'travel-the-world', class: "img-fluid rounded") %>
         <% else %>
-          <%= image_tag("stock-trip-2.jpeg", alt: 'travel-the-world', class: "img-fluid rounded") %>
+          <%= image_tag('stock-trip-2.jpeg', alt: 'travel-the-world', class: "img-fluid rounded") %>
         <% end %>
       </div>
       <div class="col-lg-4">
