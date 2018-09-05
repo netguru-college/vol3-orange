@@ -4,7 +4,8 @@
       <h1 class="display-3"><%= @trip.name %></h1>
       <p class="lead">
         <%= (@trip.start_date).strftime("Start date: %d/%m/%Y") %> </br>
-        <%= (@trip.end_date).strftime("End date: %d/%m/%Y") %>
+        <%= (@trip.end_date).strftime("End date: %d/%m/%Y") %> </br>
+        Total cost: <%=  @trip.cost %> $
       </p>
       <%= link_to 'Edit', edit_trip_path(@trip), class: "btn btn-primary btn-lg" %>
       <%= link_to 'Delete', @trip, method: :delete, class: "btn btn-danger btn-lg" %>
