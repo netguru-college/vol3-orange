@@ -11,4 +11,4 @@ deploy:
     secure: KEY
   app: travel-hero-app
   on:
-    repo: twinie96/travel-hero
+    repo: twinie96/Travel-Hero
