@@ -1,8 +1,8 @@
 FactoryBot.define do
-  factory :place do
-    name { 'Tokio' }
+  factory :attraction do
+    name { 'Tokio Odaiba' }
     start_date { Time.zone.today }
     end_date { Time.zone.tomorrow }
-    trip
+    place
   end
 end
