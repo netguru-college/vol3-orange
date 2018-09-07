@@ -18,22 +18,23 @@ RSpec.describe Attraction, type: :model do
   end
 
   it 'checks for attraction start date after places' do
-    attraction.place.start_date = Time.now
-    attraction.start_date = Time.now - 1.day
+    attraction.start_date = attraction.place
+      .start_date - 1.day
     expect(attraction).not_to be_valid
     expect(attraction.errors[:start_date][0])
       .to include("can't be earlier than")
-    attraction.start_date = Time.now + 1.day
+    attraction.start_date = attraction.place.start_date
     expect(attraction).to be_valid
   end
 
-  it 'checks for attraction end date before than places' do
-    attraction.place.end_date = Time.now + 1.day
-    attraction.end_date = Time.now + 2.days
+  it 'checks for attraction end date before places' do
+    attraction.end_date = attraction.place
+      .end_date + 1.day
     expect(attraction).not_to be_valid
     expect(attraction.errors[:end_date][0])
       .to include("can't be later than")
-    attraction.end_date = Time.now
+    attraction.end_date = attraction.place
+      .end_date
     expect(attraction).to be_valid
   end
 end

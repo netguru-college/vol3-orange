@@ -18,22 +18,20 @@ RSpec.describe Place, type: :model do
   end
 
   it 'checks for place start date after trips' do
-    place.trip.start_date = Time.now
-    place.start_date = Time.now - 1.day
+    place.start_date = place.trip.start_date - 1.day
     expect(place).not_to be_valid
     expect(place.errors[:start_date][0])
       .to include("can't be earlier than")
-    place.start_date = Time.now + 1.day
+    place.start_date = place.trip.start_date
     expect(place).to be_valid
   end
 
-  it 'checks for place end date before than trips' do
-    place.trip.end_date = Time.zone.tomorrow
-    place.end_date = Time.zone.tomorrow + 1
+  it 'checks for place end date before trips' do
+    place.end_date = place.trip.end_date + 1
     expect(place).not_to be_valid
     expect(place.errors[:end_date][0])
       .to include("can't be later than")
-    place.end_date = Time.now
+    place.end_date = place.trip.end_date
     expect(place).to be_valid
   end
 end

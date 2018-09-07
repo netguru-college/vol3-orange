@@ -18,22 +18,21 @@ RSpec.describe Hotel, type: :model do
   end
 
   it 'checks for hotel start date after places' do
-    hotel.place.start_date = Time.now
-    hotel.start_date = Time.now - 1.day
+    hotel.start_date = hotel.place
+      .start_date - 1.day
     expect(hotel).not_to be_valid
     expect(hotel.errors[:start_date][0])
       .to include("can't be earlier than")
-    hotel.start_date = Time.now + 1.day
+    hotel.start_date = hotel.place.start_date
     expect(hotel).to be_valid
   end
 
-  it 'checks for hotel end date before than places' do
-    hotel.place.end_date = Time.now + 1.day
-    hotel.end_date = Time.now + 2.days
+  it 'checks for hotel end date before places' do
+    hotel.end_date = hotel.place.end_date + 1.day
     expect(hotel).not_to be_valid
     expect(hotel.errors[:end_date][0])
       .to include("can't be later than")
-    hotel.end_date = Time.now
+    hotel.end_date = hotel.place.end_date
     expect(hotel).to be_valid
   end
 end

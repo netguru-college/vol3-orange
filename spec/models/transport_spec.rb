@@ -25,22 +25,23 @@ RSpec.describe Transport, type: :model do
   end
 
   it 'checks for transport start date after places' do
-    transport.place.start_date = Time.now
-    transport.start_date = Time.now - 1.day
+    transport.start_date = transport.place
+      .start_date - 1.day
     expect(transport).not_to be_valid
     expect(transport.errors[:start_date][0])
       .to include("can't be earlier than")
-    transport.start_date = Time.now + 1.day
+    transport.start_date = transport.place
+      .start_date
     expect(transport).to be_valid
   end
 
-  it 'checks for transport end date before than places' do
-    transport.place.end_date = Time.now + 1.day
-    transport.end_date = Time.now + 2.days
+  it 'checks for transport end date before places' do
+    transport.end_date = transport.place
+      .end_date + 1.day
     expect(transport).not_to be_valid
     expect(transport.errors[:end_date][0])
       .to include("can't be later than")
-    transport.end_date = Time.now
+    transport.end_date = transport.place.end_date
     expect(transport).to be_valid
   end
 end
