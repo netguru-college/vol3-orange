@@ -32,17 +32,7 @@ class Place < ApplicationRecord
   end
 
   def cost
-    cost = 0
-    self.hotels.each do |atr|
-      cost += atr.cost
-    end
-    self.attractions.each do |atr|
-      cost += atr.cost
-    end
-    self.transports.each do |atr|
-      cost += atr.cost
-    end
-    cost
+    PlaceCostService.new(self).call
   end
 
   private
