@@ -1,6 +1,6 @@
 # Welcome to TravelHero!
 
-See demo at https://travel-hero.herokuapp.com
+See demo at https://travel-hero-app.herokuapp.com
 
 ## Description
 
