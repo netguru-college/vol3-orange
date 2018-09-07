@@ -36,8 +36,8 @@ class HotelsController < ApplicationController
       :name,
       :address,
       :cost,
-      :start_time,
-      :end_time
+      :start_date,
+      :end_date
     )
   end
 

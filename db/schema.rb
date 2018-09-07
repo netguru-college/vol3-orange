@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_30_105231) do
+ActiveRecord::Schema.define(version: 2018_09_07_082145) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,8 +33,8 @@ ActiveRecord::Schema.define(version: 2018_08_30_105231) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "place_id"
-    t.datetime "start_time", null: false
-    t.datetime "end_time", null: false
+    t.datetime "start_date", null: false
+    t.datetime "end_date", null: false
     t.index ["place_id"], name: "index_hotels_on_place_id"
   end
 
@@ -53,8 +53,8 @@ ActiveRecord::Schema.define(version: 2018_08_30_105231) do
     t.string "type_of_transport", null: false
     t.string "start_location"
     t.float "cost", default: 0.0
-    t.datetime "start_time", null: false
-    t.datetime "end_time", null: false
+    t.datetime "start_date", null: false
+    t.datetime "end_date", null: false
     t.bigint "place_id"
     t.index ["place_id"], name: "index_transports_on_place_id"
   end
