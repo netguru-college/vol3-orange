@@ -20,11 +20,7 @@ class Trip < ApplicationRecord
   before_save :set_date_to_midnight
 
   def cost
-    cost = 0
-    self.places.each do |place|
-      cost += place.cost
-    end
-    cost
+    TripCostService.new(self).call
   end
 
   private
