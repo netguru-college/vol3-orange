@@ -1,4 +1,4 @@
-class StartDateWithinPlaceDateService
+class DatesWithinPlaceDateService
   def initialize(object)
     @object = object
   end
@@ -6,6 +6,9 @@ class StartDateWithinPlaceDateService
   def call
     if @object.place.start_date > @object.start_date
       @object.errors.add(:start_date, "can't be earlier than #{@object.place.start_date}")
+    end
+    if @object.place.end_date < @object.end_date
+      @object.errors.add(:end_date, "can't be later than #{@object.place.end_date}")
     end
   end
 end
