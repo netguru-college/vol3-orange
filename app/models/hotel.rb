@@ -22,7 +22,6 @@ class Hotel < ApplicationRecord
   private
 
   def set_date_to_midnight
-    self.start_date = self.start_date.midnight
-    self.end_date = self.end_date.midnight
+    SetDateService.new(self).call
   end
 end
