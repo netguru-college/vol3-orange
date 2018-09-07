@@ -10,10 +10,10 @@ class Hotel < ApplicationRecord
   private
 
   def dates_within_place_dates
-    DatesWithinPlaceDateService.new(self).call
+    ::DatesRangeValidatorService.new(object: self, kind: :place).call
   end
 
   def set_date_to_midnight
-    SetDateService.new(self).call
+    ::SetDateService.new(self).call
   end
 end

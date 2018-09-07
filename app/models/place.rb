@@ -26,10 +26,10 @@ class Place < ApplicationRecord
   private
 
   def dates_within_trip_dates
-    DatesWithinTripDateService.new(self).call
+    ::DatesRangeValidatorService.new(object: self, kind: :trip).call
   end
 
   def set_date_to_midnight
-    SetDateService.new(self).call
+    ::SetDateService.new(self).call
   end
 end
