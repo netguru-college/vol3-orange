@@ -6,24 +6,24 @@ RSpec.describe Place, type: :model do
   it 'checks for presence of name' do
     place.name = nil
     expect(place).not_to be_valid
-    expect(place.errors[:name][0]).
-      to include("can't be blank")
+    expect(place.errors[:name][0])
+      .to include("can't be blank")
   end
 
   it 'checks for start date after end date' do
     place.end_date = place.start_date - 1
     expect(place).not_to be_valid
-    expect(place.errors[:end_date][0]).
-      to include("must be after or equal to")
+    expect(place.errors[:end_date][0])
+      .to include("must be after or equal to")
   end
 
   it 'checks for place start date after trips' do
     place.trip.start_date = Time.now
-    place.start_date = Time.zone.yesterday
+    place.start_date = Time.now - 1.day
     expect(place).not_to be_valid
-    expect(place.errors[:start_date][0]).
-      to include("can't be earlier than")
-    place.start_date = Time.zone.tomorrow
+    expect(place.errors[:start_date][0])
+      .to include("can't be earlier than")
+    place.start_date = Time.now + 1.day
     expect(place).to be_valid
   end
 
@@ -31,8 +31,8 @@ RSpec.describe Place, type: :model do
     place.trip.end_date = Time.zone.tomorrow
     place.end_date = Time.zone.tomorrow + 1
     expect(place).not_to be_valid
-    expect(place.errors[:end_date][0]).
-      to include("can't be later than")
+    expect(place.errors[:end_date][0])
+      .to include("can't be later than")
     place.end_date = Time.now
     expect(place).to be_valid
   end
