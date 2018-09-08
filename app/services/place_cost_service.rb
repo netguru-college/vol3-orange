@@ -14,7 +14,6 @@ class PlaceCostService
   end
 
   def sum_attr_cost(attr)
-    @place.send(attr)&.map { |x| x.cost }.sum
+    @place.send(attr)&.map { |attr| attr.cost }.sum
   end
-  
 end
