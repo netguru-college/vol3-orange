@@ -4,16 +4,16 @@ class PlaceCostService
   end
 
   def call
-    cost = 0
-    @place.hotels.each do |atr|
-      cost += atr.cost
-    end
-    @place.attractions.each do |atr|
-      cost += atr.cost
-    end
-    @place.transports.each do |atr|
-      cost += atr.cost
-    end
-    cost
+    attributes.map { |attr| sum_attr_cost(attr) }.sum
+  end
+
+  private
+
+  def attributes
+    %I(hotels attractions transports)
+  end
+
+  def sum_attr_cost(attr)
+    @place.send(attr)&.map { |attr| attr.cost }.sum
   end
 end

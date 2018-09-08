@@ -4,10 +4,6 @@ class TripCostService
   end
 
   def call
-    cost = 0
-    @trip.places.each do |place|
-      cost += place.cost
-    end
-    cost
+    @trip.places.map { |place| place.cost }.sum
   end
 end
