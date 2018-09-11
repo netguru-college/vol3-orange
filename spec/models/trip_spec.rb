@@ -19,7 +19,7 @@ RSpec.describe Trip, type: :model do
   end
 
   describe 'sets date to midnight on save' do
-    it 'changes start_date to midnight' do
+    it 'of start_date' do
       previous_start_date = trip.start_date
       expect { trip.save }
       .to change {
@@ -28,7 +28,7 @@ RSpec.describe Trip, type: :model do
         .to(previous_start_date.midnight)
     end
 
-    it 'changes end_date to midnight' do
+    it 'of end_date' do
       previous_end_date = trip.end_date
       expect { trip.save }
       .to change {

@@ -46,7 +46,7 @@ RSpec.describe Transport, type: :model do
   end
 
   describe 'sets date to midnight on save' do
-    it 'changes start_date to midnight' do
+    it 'of start_date' do
       previous_start_date = transport.start_date
       expect { transport.save }
       .to change {
@@ -55,7 +55,7 @@ RSpec.describe Transport, type: :model do
         .to(previous_start_date.midnight)
     end
 
-    it 'changes end_date to midnight' do
+    it 'of end_date' do
       previous_end_date = transport.end_date
       expect { transport.save }
       .to change {
