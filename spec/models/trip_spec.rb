@@ -17,4 +17,24 @@ RSpec.describe Trip, type: :model do
     expect(trip.errors[:end_date][0])
       .to include("must be after or equal to")
   end
+
+  describe 'sets date to midnight on save' do
+    it 'changes start_date to midnight' do
+      previous_start_date = trip.start_date
+      expect { trip.save }
+      .to change {
+        trip.start_date }
+        .from(previous_start_date)
+        .to(previous_start_date.midnight)
+    end
+
+    it 'changes end_date to midnight' do
+      previous_end_date = trip.end_date
+      expect { trip.save }
+      .to change {
+        trip.end_date }
+        .from(previous_end_date)
+        .to(previous_end_date.midnight)
+    end
+  end
 end
