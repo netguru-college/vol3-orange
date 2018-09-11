@@ -37,4 +37,24 @@ RSpec.describe Attraction, type: :model do
       .end_date
     expect(attraction).to be_valid
   end
+
+  describe 'sets date to midnight on save' do
+    it 'changes start_date to midnight' do
+      previous_start_date = attraction.start_date
+      expect { attraction.save }
+      .to change {
+        attraction.start_date }
+        .from(previous_start_date)
+        .to(previous_start_date.midnight)
+    end
+
+    it 'changes end_date to midnight' do
+      previous_end_date = attraction.end_date
+      expect { attraction.save }
+      .to change {
+        attraction.end_date }
+        .from(previous_end_date)
+        .to(previous_end_date.midnight)
+    end
+  end
 end
