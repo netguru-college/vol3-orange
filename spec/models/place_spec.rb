@@ -34,4 +34,24 @@ RSpec.describe Place, type: :model do
     place.end_date = place.trip.end_date
     expect(place).to be_valid
   end
+
+  describe 'sets date to midnight on save' do
+    it 'of start_date' do
+      previous_start_date = place.start_date
+      expect { place.save }
+      .to change {
+        place.start_date }
+        .from(previous_start_date)
+        .to(previous_start_date.midnight)
+    end
+
+    it 'of end_date' do
+      previous_end_date = place.end_date
+      expect { place.save }
+      .to change {
+        place.end_date }
+        .from(previous_end_date)
+        .to(previous_end_date.midnight)
+    end
+  end
 end

@@ -35,4 +35,24 @@ RSpec.describe Hotel, type: :model do
     hotel.end_date = hotel.place.end_date
     expect(hotel).to be_valid
   end
+
+  describe 'sets date to midnight on save' do
+    it 'of start_date' do
+      previous_start_date = hotel.start_date
+      expect { hotel.save }
+      .to change {
+        hotel.start_date }
+        .from(previous_start_date)
+        .to(previous_start_date.midnight)
+    end
+
+    it 'of end_date' do
+      previous_end_date = hotel.end_date
+      expect { hotel.save }
+      .to change {
+        hotel.end_date }
+        .from(previous_end_date)
+        .to(previous_end_date.midnight)
+    end
+  end
 end
