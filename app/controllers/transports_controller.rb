@@ -35,8 +35,8 @@ class TransportsController < ApplicationController
       :type_of_transport,
       :start_location,
       :cost,
-      :start_time,
-      :end_time
+      :start_date,
+      :end_date
     )
   end
 
