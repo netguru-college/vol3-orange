@@ -1,9 +1,17 @@
 class TripsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_trip, only: [:show, :edit, :update, :destroy]
+  decorates_assigned :current_trips, :upcoming_trips, :past_trips
 
   def index
-    @trips = current_user ? current_user.trips : nil
+     if current_user
+        @trips = current_user.trips
+        @current_trips = @trips.current
+        @upcoming_trips = @trips.upcoming
+        @past_trips = @trips.past
+    else
+      @trips = nil
+    end
   end
 
   def new

@@ -1,6 +1,6 @@
 class TransportsController < ApplicationController
   before_action :set_trip, :set_place
-  before_action :set_transport, only: [:show, :edit, :update, :destroy]
+  before_action :set_transport, only: [:edit, :update, :destroy]
 
   def new
     @transport = @place.transports.build

@@ -2,7 +2,7 @@
 <%= simple_form_for [@trip, @place] do |p| %>
     <%= p.input :name %>
     <%= p.input :country, priority: ["AU", "PL", "GB", "US"], label: false %>
-    <%= p.input :start_date, as: :date %>
-    <%= p.input :end_date, as: :date %>
+    <%= p.input :formatted_start_date, as: :date %>
+    <%= p.input :formatted_end_date, as: :date %>
     <%= p.button :submit, class: 'btn btn-success btn-block' %>
 <% end %>
