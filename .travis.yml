@@ -8,7 +8,7 @@ before_script:
 deploy:
   provider: heroku
   api_key:
-    secure: KEY
-  app: travel-hero-app
+    secure: BPZQeTVVqigFMrqHxF1tXdkIpkzdAHxfeoIxfTzRpsufIsAa19X5u7x1FCKxVRjAJbbsy0OnD7DtR/3W2JRKMvIvKbvxC29fbz9UW9ARRvUCmVUz/AJrh/hMIpoY+ljg70mD8u5Z5xpfG0dqkCdr4sA2IFUVPN8acm3k479nGWH9W6PBcjpYnmfaiRdgj6uelnA1zoohAvRy6Oqh530hET9dLj5FZZ4gHQgjAoP0MUk5W5yhtVIjetL2w8IchKOPB9fYVVf7Vek1Q/g4QDo+/GdtdzM7FVLo1/iMQ8AaRrS4o0cdn+66hIwJYzZTQsAmkqSB9fULk9SYA2L5gf5GhMpp1oiGxzOLZ+jnaORmQVB5nkFJaPCC1Hd2rfbn3OF0xgiucvrtpLAf6Cl8eQuqsqglv0D9rcG1MEpW2sjAJL9zepkJPUcI14jnc08yisIQwDb5kKAp1dfAbSNM9sb8OD1z1ULF2noRONTRLGuU4ULnCS2rJ3wczSXSKh7WRkNUsMz1tzyYElWDHx0/6itCIRMk/AJ+6/OZRrqoq1JlHOiI6HWzsnzS4gAlPJ5ZiI4wEPOnR9M0xlrjL7J+uDpOqgB60yZgUqAuQ/JS997pKLXDA1eHEiprSaqEstWzvfQRp4hqFEwICJligqD8M/GZgbZL2jXURuPpHHWZciHSN04=
+  app: travel-hero
   on:
     repo: twinie96/Travel-Hero
