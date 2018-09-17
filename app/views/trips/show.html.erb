@@ -4,7 +4,7 @@
       <% if @trip.image %>
         <%= image_tag(@trip.image_url.to_s, alt: 'travel-the-world', class: "img-fluid rounded") %>
       <% else %>
-        <%= image_tag('https://s3.eu-central-1.amazonaws.com/travel-hero-app/travel.jpg', alt: 'travel-the-world', class: "img-fluid rounded") %>
+        <%= image_tag('https://s3.amazonaws.com/travel-hero/uploads/stock-trip-2.jpeg', alt: 'travel-the-world', class: "img-fluid rounded") %>
       <% end %>
       <h1 class="display-3"><%= @trip.name %></h1>
       <p class="lead">
